@@ -12,9 +12,7 @@ export class UserService {
   constructor(private http : HttpClient) { }
 
   login(user: UserRegistration) {
-    this.http.post(`${this.baseUrl}/users/register`, user).subscribe(data =>{
-      console.log(data)
-    })
+    return this.http.post(`${this.baseUrl}/users/register`, user);
   }
 
 }

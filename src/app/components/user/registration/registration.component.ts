@@ -55,7 +55,9 @@ export class RegistrationComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    this.loading = true;
     if (this.registrationForm.invalid) {
+      this.loading = false;
       return;
     }
 
@@ -68,15 +70,18 @@ export class RegistrationComponent implements OnInit {
       this.registrationForm.get('password')?.value
     );
 
-    this.userService.login(this.user);
-
-    
-    // this.error = "failed";
-    this.loading = true
-
-    this.registrationForm.reset();
-    // return
-
-    this.router.navigate(['/login']);
+    this.userService.login(this.user).subscribe({
+      next: () => {
+        this.loading = false;
+        this.registrationForm.reset();
+        this.router.navigate(['/login']);
+      },
+      error: (error) => {
+        this.error = error;
+        this.loading = false;
+      },
+    });
   }
+
+
 }
