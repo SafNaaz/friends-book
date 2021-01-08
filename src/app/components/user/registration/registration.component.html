@@ -1,5 +1,6 @@
 <div class="container mt-3">
   <h3>Fill up below to get started..</h3>
+  <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
   <form
     class="mt-4"
     [formGroup]="registrationForm"
@@ -243,6 +244,10 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Register</button>
+    <button type="submit" [disabled]="loading" class="btn btn-primary">
+      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+      Register
+    </button>
+    
   </form>
 </div>
