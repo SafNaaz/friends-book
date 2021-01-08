@@ -15,6 +15,7 @@ export class RegistrationComponent implements OnInit {
   submitted: boolean = false;
   loading = false;
   error = '';
+  registrationSuccess = false;
 
   user!: UserRegistration;
 
@@ -72,9 +73,10 @@ export class RegistrationComponent implements OnInit {
 
     this.userService.login(this.user).subscribe({
       next: () => {
+        this.registrationSuccess = true;
         this.loading = false;
         this.registrationForm.reset();
-        this.router.navigate(['/login']);
+        // this.router.navigate(['/login']);
       },
       error: (error) => {
         this.error = error;

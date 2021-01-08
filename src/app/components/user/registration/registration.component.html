@@ -1,11 +1,18 @@
 <div class="container mt-3">
-  <h3>Fill up below to get started..</h3>
+  <h3 *ngIf="!registrationSuccess">Fill up below to get started..</h3>
   <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+  <div *ngIf="registrationSuccess">
+    <div class="alert alert-success mt-3 mb-0">
+        Registration Successfull. Welcome {{user.firstName}} {{user.firstName}}!. <a routerLink='/login'>Login</a>
+    </div>
+  </div>
+  
   <form
     class="mt-4"
     [formGroup]="registrationForm"
     novalidate
     (ngSubmit)="onSubmit()"
+    *ngIf="!registrationSuccess"
   >
     <div class="form-group form-group-sm">
       <input
