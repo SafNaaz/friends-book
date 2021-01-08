@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "friends-book"
+  "defaultProject": "friends-book",
+  "cli": {
+    "analytics": false
+  }
 }
