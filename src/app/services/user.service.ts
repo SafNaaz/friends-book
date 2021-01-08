@@ -7,6 +7,8 @@ import { UserRegistration } from '../models/user/UserRegistration';
 })
 export class UserService {
 
+  currentUserValue : any;
+
   baseUrl = 'https://nodejs-fb-app.herokuapp.com';
 
   constructor(private http : HttpClient) { }
