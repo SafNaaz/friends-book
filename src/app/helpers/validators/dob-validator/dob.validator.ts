@@ -1,7 +1,7 @@
-import { AbstractControl, ValidationErrors } from '@angular/forms';
+import { AbstractControl } from '@angular/forms';
 
 export class DateOfBirthValidator {
-  static validDob(control: AbstractControl): ValidationErrors | null {
+  static validDob(control: AbstractControl) {
     let inputDob = control.get('dob')?.value;
 
     let validDate = /^([0-9]{4})-([0-9]{2})-([0-9]{2})$/.test(inputDob);
@@ -19,19 +19,20 @@ export class DateOfBirthValidator {
             control.get('dob')?.setErrors({ futureDate: true });
         }
 
-        // if(dateofBirth.getTime() > )
-    //   let dobisValid = true;
+        if(DateOfBirthValidator.getAge(dateofBirth) < 15){
+          control.get('dob')?.setErrors({ minor: true });
+        }
 
-    //   if (dob.get){
-
-    //   }
-
-    //   if (!dobisValid) {
-    //     control.get('dob')?.setErrors({ passwordMismatch: true });
-    //     return { not_the_same: true };
-    //   }
-    // } else {
-        return null;
       }
   }
+
+  static getAge(birthDate :Date) : number {
+    var today = new Date();
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+}
 }

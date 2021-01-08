@@ -1,8 +1,8 @@
-import { AbstractControl, ValidationErrors } from '@angular/forms';
+import { AbstractControl } from '@angular/forms';
 
 export class ConfirmPasswordValidator{
 
-    static matchPassword(control: AbstractControl) : ValidationErrors | null{
+    static matchPassword(control: AbstractControl){
         let password = control.get('password')?.value;
         let confirmPassword = control.get('confirmPassword')?.value;
 
@@ -15,14 +15,10 @@ export class ConfirmPasswordValidator{
         if (!valid) {
             // return what´s not valid
             control.get('password')?.setErrors({passwordWeak: true})
-            return { strong: true };
         }
 
         if(password != confirmPassword){
             control.get('confirmPassword')?.setErrors({passwordMismatch: true})
-            return ({not_the_same: true});
-        } else {
-            return null
         }
     }
 }
