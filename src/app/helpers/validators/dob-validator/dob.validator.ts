@@ -21,10 +21,12 @@ export class DateOfBirthValidator {
 
         if(now < dateofBirth){
             control.get('dob')?.setErrors({ futureDate: true });
+            return;
         }
 
         if(DateOfBirthValidator.getAge(dateofBirth) < 15){
           control.get('dob')?.setErrors({ minor: true });
+          return;
         }
 
       }
