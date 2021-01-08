@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DateOfBirthValidator } from 'src/app/helpers/validators/dob-validator/dob.validator';
 import { ConfirmPasswordValidator } from 'src/app/helpers/validators/password-validator/password.validator';
+import { UserRegistration } from 'src/app/models/user/UserRegistration';
 
 @Component({
   selector: 'app-registration',
@@ -11,6 +12,8 @@ import { ConfirmPasswordValidator } from 'src/app/helpers/validators/password-va
 export class RegistrationComponent implements OnInit {
 
   submitted: boolean = false;
+
+  user! : UserRegistration;
 
   constructor(private fb : FormBuilder) { }
 
@@ -35,6 +38,22 @@ export class RegistrationComponent implements OnInit {
 
   onSubmit(){
     this.submitted = true;
+    if(this.registrationForm.invalid){
+      return;
+    }
+
+    this.user = new UserRegistration(this.registrationForm.get('firstName')?.value,
+    this.registrationForm.get('lastName')?.value,
+    this.registrationForm.get('email')?.value,
+    this.registrationForm.get('gender')?.value,
+    this.registrationForm.get('dob')?.value,
+    this.registrationForm.get('password')?.value,
+      
+    )
+
+    this.registrationForm.reset()
+    
+    console.log(this.user)
   }
 
 }
