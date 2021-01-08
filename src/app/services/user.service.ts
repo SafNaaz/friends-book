@@ -13,8 +13,12 @@ export class UserService {
 
   constructor(private http : HttpClient) { }
 
-  login(user: UserRegistration) {
+  register(user: UserRegistration) {
     return this.http.post(`${this.baseUrl}/users/register`, user);
+  }
+
+  login(user: { email: any; password: any; }) {
+    return this.http.post(`${this.baseUrl}/users/authenticate`, user);
   }
 
 }

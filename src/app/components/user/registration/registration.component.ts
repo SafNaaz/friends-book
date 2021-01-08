@@ -71,7 +71,7 @@ export class RegistrationComponent implements OnInit {
       this.registrationForm.get('password')?.value
     );
 
-    this.userService.login(this.user).subscribe({
+    this.userService.register(this.user).subscribe({
       next: () => {
         this.registrationSuccess = true;
         this.loading = false;

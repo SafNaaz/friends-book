@@ -8,8 +8,8 @@ export class UserRegistration {
 
   constructor(
     firstName: string,
-    email: string,
     lastName: string,
+    email: string,
     gender: string,
     dob: string,
     password: string
