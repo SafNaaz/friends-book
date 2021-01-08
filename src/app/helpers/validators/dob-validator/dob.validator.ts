@@ -4,6 +4,10 @@ export class DateOfBirthValidator {
   static validDob(control: AbstractControl) {
     let inputDob = control.get('dob')?.value;
 
+    if(control.get('dob')?.invalid){
+      return
+  }
+
     let validDate = /^([0-9]{4})-([0-9]{2})-([0-9]{2})$/.test(inputDob);
 
 

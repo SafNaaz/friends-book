@@ -6,6 +6,10 @@ export class ConfirmPasswordValidator{
         let password = control.get('password')?.value;
         let confirmPassword = control.get('confirmPassword')?.value;
 
+        if(control.get('password')?.invalid){
+            return
+        }
+
         let hasNumber = /\d/.test(password);
         let hasUpper = /[A-Z]/.test(password);
         let hasLower = /[a-z]/.test(password);
