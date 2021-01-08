@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ConfirmPasswordValidator } from 'src/app/helpers/mismatch-validator/mismatch.validator';
+import { DateOfBirthValidator } from 'src/app/helpers/validators/dob-validator/dob.validator';
+import { ConfirmPasswordValidator } from 'src/app/helpers/validators/password-validator/password.validator';
 
 @Component({
   selector: 'app-registration',
@@ -29,7 +30,8 @@ export class RegistrationComponent implements OnInit {
     phoneNumber:['', [Validators.required, Validators.minLength(10), Validators.pattern('^[0-9]*$')]],
     password:['', [Validators.required, Validators.minLength(6)]],
     confirmPassword:['', [Validators.required, Validators.minLength(6)]]
-  },{validators : ConfirmPasswordValidator.matchPassword})
+  },{validators : [ConfirmPasswordValidator.matchPassword,
+                    DateOfBirthValidator.validDob]})
 
   onSubmit(){
 

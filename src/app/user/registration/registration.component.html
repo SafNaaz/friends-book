@@ -107,8 +107,14 @@
           formControlName="dob"
           required
         />
-        <div *ngIf="f.firstName?.errors?.required" class="invalid-feedback">
+        <div *ngIf="f.dob?.errors?.required" class="invalid-feedback">
           Please Enter your Date Of Birth.
+        </div>
+        <div *ngIf="f.dob?.errors?.invalidDate" class="invalid-feedback">
+          Date Of Birth is Invalid, Must be of format (dd/MM/yyyy).
+        </div>
+        <div *ngIf="f.dob?.errors?.futureDate" class="invalid-feedback">
+          Date Of Birth Cannot be Future.
         </div>
         <div class="valid-feedback">Date Of Birth looks good.</div>
       </div>
