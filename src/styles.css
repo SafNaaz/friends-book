@@ -3,3 +3,7 @@ body {
     margin-bottom: 60px; /* Margin bottom by footer height */
     padding-top: 65px; 
   }
+
+a{
+  text-decoration: none !important;
+}
