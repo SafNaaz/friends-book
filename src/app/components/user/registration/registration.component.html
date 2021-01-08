@@ -90,65 +90,64 @@
     </div>
 
     <div class="form-group form-group-sm">
-        <input
-          type="date"
-          class="form-control"
-          [ngClass]="
-            f.dob?.invalid &&
-            (f.dob?.dirty || f.dob?.touched || submitted)
-              ? 'is-invalid'
-              : f.dob?.valid
-              ? 'is-valid'
-              : ''
-          "
-          id="dob"
-          placeholder="Date of birth"
-          name="dob"
-          formControlName="dob"
-          required
-        />
-        <div *ngIf="f.dob?.errors?.required" class="invalid-feedback">
-          Please Enter your Date Of Birth.
-        </div>
-        <div *ngIf="f.dob?.errors?.invalidDate" class="invalid-feedback">
-          Date Of Birth is Invalid, Must be of format (dd/MM/yyyy).
-        </div>
-        <div *ngIf="f.dob?.errors?.futureDate" class="invalid-feedback">
-          Date Of Birth Cannot be Future.
-        </div>
-        <div *ngIf="f.dob?.errors?.minor" class="invalid-feedback">
-          You have to be Minimum 15 Years or Older
-        </div>
-        <div class="valid-feedback">Date Of Birth looks good.</div>
+      <input
+        type="date"
+        class="form-control"
+        [ngClass]="
+          f.dob?.invalid && (f.dob?.dirty || f.dob?.touched || submitted)
+            ? 'is-invalid'
+            : f.dob?.valid
+            ? 'is-valid'
+            : ''
+        "
+        id="dob"
+        placeholder="Date of birth"
+        name="dob"
+        formControlName="dob"
+        required
+      />
+      <div *ngIf="f.dob?.errors?.required" class="invalid-feedback">
+        Please Enter your Date Of Birth.
       </div>
+      <div *ngIf="f.dob?.errors?.invalidDate" class="invalid-feedback">
+        Date Of Birth is Invalid, Must be of format (dd/MM/yyyy).
+      </div>
+      <div *ngIf="f.dob?.errors?.futureDate" class="invalid-feedback">
+        Date Of Birth Cannot be Future.
+      </div>
+      <div *ngIf="f.dob?.errors?.minor" class="invalid-feedback">
+        You have to be Minimum 15 Years or Older
+      </div>
+      <div class="valid-feedback">Date Of Birth looks good.</div>
+    </div>
 
-      <div class="form-group form-group-sm">
-        <select
-          class="form-control"
-          [ngClass]="
-            f.gender?.invalid &&
-            (f.gender?.dirty || f.gender?.touched || submitted)
-              ? 'is-invalid'
-              : f.gender?.valid
-              ? 'is-valid'
-              : ''
-          "
-          id="gender"
-          placeholder="Gender"
-          name="gender"
-          formControlName="gender"
-          required
-        >
+    <div class="form-group form-group-sm">
+      <select
+        class="form-control"
+        [ngClass]="
+          f.gender?.invalid &&
+          (f.gender?.dirty || f.gender?.touched || submitted)
+            ? 'is-invalid'
+            : f.gender?.valid
+            ? 'is-valid'
+            : ''
+        "
+        id="gender"
+        placeholder="Gender"
+        name="gender"
+        formControlName="gender"
+        required
+      >
         <option value="" selected disabled>Gender</option>
         <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>    
-        </select>
-        <div *ngIf="f.gender?.errors?.required" class="invalid-feedback">
-          Please Select your Gender.
-        </div>
-        <div class="valid-feedback">Gender looks good.</div>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+      <div *ngIf="f.gender?.errors?.required" class="invalid-feedback">
+        Please Select your Gender.
       </div>
+      <div class="valid-feedback">Gender looks good.</div>
+    </div>
 
     <div class="form-group">
       <input
@@ -173,7 +172,8 @@
         Password should contain minimum six characters
       </div>
       <div *ngIf="f.password?.errors?.passwordWeak" class="invalid-feedback">
-        Weak Password, Must include minimum 1 Uppercase, 1 Lowercase, 1 digit, & 1 Special Character from [$@!%*?&]
+        Weak Password, Must include minimum 1 Uppercase, 1 Lowercase, 1 digit, &
+        1 Special Character from [$@!%*?&]
       </div>
       <div *ngIf="f.password?.errors?.required" class="invalid-feedback">
         Please Enter a Password.
@@ -198,7 +198,10 @@
         name="confirmPassword"
         formControlName="confirmPassword"
       />
-      <div *ngIf="f.confirmPassword?.errors?.minlength" class="invalid-feedback">
+      <div
+        *ngIf="f.confirmPassword?.errors?.minlength"
+        class="invalid-feedback"
+      >
         Password should contain minimum six characters
       </div>
       <div *ngIf="f.confirmPassword?.errors?.required" class="invalid-feedback">
@@ -212,6 +215,34 @@
       </div>
       <div class="valid-feedback">Password Confirmed</div>
     </div>
+
+    <div class="form-group">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          [ngClass]="
+            f.agreeTerms?.invalid &&
+            (f.agreeTerms?.dirty || f.agreeTerms?.touched || submitted)
+              ? 'is-invalid'
+              : f.agreeTerms?.valid
+              ? 'is-valid'
+              : ''
+          "
+          value=""
+          id="invalidCheck"
+          formControlName="agreeTerms"
+          required
+        />
+        <label class="form-check-label" for="invalidCheck">
+          I Confirm that, I am over 15 years old and I Agree to terms and conditions
+        </label>
+        <div *ngIf="f.agreeTerms?.errors?.required" class="invalid-feedback">
+          You must agree before submitting.
+        </div>
+      </div>
+    </div>
+
     <button type="submit" class="btn btn-primary">Register</button>
   </form>
 </div>

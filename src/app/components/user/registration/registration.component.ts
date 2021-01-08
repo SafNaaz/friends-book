@@ -27,14 +27,14 @@ export class RegistrationComponent implements OnInit {
     email:['', [Validators.required, Validators.email]],
     dob:['', [Validators.required]],
     gender:['', [Validators.required]],
-    phoneNumber:['', [Validators.required, Validators.minLength(10), Validators.pattern('^[0-9]*$')]],
     password:['', [Validators.required, Validators.minLength(6)]],
-    confirmPassword:['', [Validators.required, Validators.minLength(6)]]
+    confirmPassword:['', [Validators.required, Validators.minLength(6)]],
+    agreeTerms:['', Validators.required]
   },{validators : [ConfirmPasswordValidator.matchPassword,
                     DateOfBirthValidator.validDob]})
 
   onSubmit(){
-
+    this.submitted = true;
   }
 
 }
