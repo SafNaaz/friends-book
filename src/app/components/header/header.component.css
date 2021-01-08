@@ -5,3 +5,7 @@ nav{
     width: 100%;
     top: 0;
 }
+
+.active a{
+    color: green;
+}
