@@ -1,1 +1,205 @@
-<p>registration works!</p>
+<div class="container mt-3">
+  <h3>Fill up below to get started..</h3>
+  <form
+    class="mt-4"
+    [formGroup]="registrationForm"
+    novalidate
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="form-group form-group-sm">
+      <input
+        type="text"
+        class="form-control"
+        [ngClass]="
+          f.firstName?.invalid &&
+          (f.firstName?.dirty || f.firstName?.touched || submitted)
+            ? 'is-invalid'
+            : f.firstName?.valid
+            ? 'is-valid'
+            : ''
+        "
+        id="firstName"
+        placeholder="First Name"
+        name="firstName"
+        formControlName="firstName"
+        minlength="3"
+        required
+      />
+      <div *ngIf="f.firstName?.errors?.minlength" class="invalid-feedback">
+        First name should contain min 3 letters
+      </div>
+      <div *ngIf="f.firstName?.errors?.required" class="invalid-feedback">
+        Please Enter your First name.
+      </div>
+      <div class="valid-feedback">First name looks good.</div>
+    </div>
+
+    <div class="form-group form-group-sm">
+      <input
+        type="text"
+        class="form-control"
+        [ngClass]="
+          f.lastName?.invalid &&
+          (f.lastName?.dirty || f.lastName?.touched || submitted)
+            ? 'is-invalid'
+            : f.lastName?.valid
+            ? 'is-valid'
+            : ''
+        "
+        id="lastName"
+        placeholder="Last Name"
+        name="lastName"
+        formControlName="lastName"
+        minlength="3"
+        required
+      />
+      <div *ngIf="f.lastName?.errors?.minlength" class="invalid-feedback">
+        Last name should contain min 3 letters
+      </div>
+      <div *ngIf="f.lastName?.errors?.required" class="invalid-feedback">
+        Please Enter your Last name.
+      </div>
+      <div class="valid-feedback">Last name looks good.</div>
+    </div>
+
+    <div class="form-group">
+      <input
+        type="email"
+        class="form-control"
+        [ngClass]="
+          f.email?.invalid && (f.email?.dirty || f.email?.touched || submitted)
+            ? 'is-invalid'
+            : f.email?.valid
+            ? 'is-valid'
+            : ''
+        "
+        id="exampleInputEmail1"
+        placeholder="Email"
+        name="email"
+        formControlName="email"
+        required
+        email
+      />
+      <div *ngIf="f.email?.errors?.email" class="invalid-feedback">
+        Email format is not valid eg: user@xx.cxx
+      </div>
+      <div *ngIf="f.email?.errors?.required" class="invalid-feedback">
+        Please Enter your email id.
+      </div>
+      <div class="valid-feedback">Email looks good.</div>
+    </div>
+
+    <div class="form-group form-group-sm">
+        <input
+          type="date"
+          class="form-control"
+          [ngClass]="
+            f.dob?.invalid &&
+            (f.dob?.dirty || f.dob?.touched || submitted)
+              ? 'is-invalid'
+              : f.dob?.valid
+              ? 'is-valid'
+              : ''
+          "
+          id="dob"
+          placeholder="Date of birth"
+          name="dob"
+          formControlName="dob"
+          required
+        />
+        <div *ngIf="f.firstName?.errors?.required" class="invalid-feedback">
+          Please Enter your Date Of Birth.
+        </div>
+        <div class="valid-feedback">Date Of Birth looks good.</div>
+      </div>
+
+      <div class="form-group form-group-sm">
+        <select
+          class="form-control"
+          [ngClass]="
+            f.gender?.invalid &&
+            (f.gender?.dirty || f.gender?.touched || submitted)
+              ? 'is-invalid'
+              : f.gender?.valid
+              ? 'is-valid'
+              : ''
+          "
+          id="gender"
+          placeholder="Gender"
+          name="gender"
+          formControlName="gender"
+          required
+        >
+        <option value="" selected disabled>Gender</option>
+        <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>    
+        </select>
+        <div *ngIf="f.gender?.errors?.required" class="invalid-feedback">
+          Please Select your Gender.
+        </div>
+        <div class="valid-feedback">Gender looks good.</div>
+      </div>
+
+    <div class="form-group">
+      <input
+        type="password"
+        class="form-control"
+        [ngClass]="
+          f.password?.invalid &&
+          (f.password?.dirty || f.password?.touched || submitted)
+            ? 'is-invalid'
+            : f.password?.valid
+            ? 'is-valid'
+            : ''
+        "
+        id="exampleInputPassword1"
+        placeholder="Password"
+        name="password"
+        formControlName="password"
+        required
+        minlength="6"
+      />
+      <div *ngIf="f.password?.errors?.minlength" class="invalid-feedback">
+        Password should contain minimum six characters
+      </div>
+      <div *ngIf="f.password?.errors?.required" class="invalid-feedback">
+        Please Enter a Password.
+      </div>
+      <div class="valid-feedback">Password looks good.</div>
+    </div>
+
+    <div class="form-group">
+      <input
+        type="password"
+        class="form-control"
+        [ngClass]="
+          f.confirmPassword?.invalid &&
+          (f.confirmPassword?.dirty || f.confirmPassword?.touched || submitted)
+            ? 'is-invalid'
+            : f.confirmPassword?.valid
+            ? 'is-valid'
+            : ''
+        "
+        id="exampleInputPassword2"
+        placeholder="Confirm Password"
+        name="confirmPassword"
+        formControlName="confirmPassword"
+      />
+      <div *ngIf="f.confirmPassword?.errors?.minlength" class="invalid-feedback">
+        Password should contain minimum six characters
+      </div>
+      <div *ngIf="f.confirmPassword?.errors?.required" class="invalid-feedback">
+        Please Confirm the Password.
+      </div>
+      <div
+        *ngIf="f.confirmPassword?.errors?.passwordMismatch"
+        class="invalid-feedback"
+      >
+        Password do not Match.
+      </div>
+      <div class="valid-feedback">Password Confirmed</div>
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+  </form>
+</div>
