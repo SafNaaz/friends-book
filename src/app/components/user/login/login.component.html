@@ -1,1 +1,70 @@
-<p>login works!</p>
+<div class="container mt-3">
+    <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+    
+    <form
+      class="mt-4"
+      [formGroup]="loginForm"
+      novalidate
+      (ngSubmit)="onSubmit()"
+    >
+  
+      <div class="form-group">
+        <input
+          type="email"
+          class="form-control"
+          [ngClass]="
+            f.email?.invalid && (f.email?.dirty || f.email?.touched || submitted)
+              ? 'is-invalid'
+              : f.email?.valid
+              ? ''
+              : ''
+          "
+          id="exampleInputEmail1"
+          placeholder="Email"
+          name="email"
+          formControlName="email"
+          required
+          email
+        />
+        <div *ngIf="f.email?.errors?.email" class="invalid-feedback">
+          Email format is not valid eg: user@xx.cxx
+        </div>
+        <div *ngIf="f.email?.errors?.required" class="invalid-feedback">
+          Please Enter your email id.
+        </div>
+      </div>
+  
+  
+      <div class="form-group">
+        <input
+          type="password"
+          class="form-control"
+          [ngClass]="
+            f.password?.invalid &&
+            (f.password?.dirty || f.password?.touched || submitted)
+              ? 'is-invalid'
+              : f.password?.valid
+              ? ''
+              : ''
+          "
+          id="exampleInputPassword1"
+          placeholder="Password"
+          name="password"
+          formControlName="password"
+          required
+        />
+        
+        <div *ngIf="f.password?.errors?.required" class="invalid-feedback">
+          Please Enter a Password.
+        </div>
+      </div>
+  
+  
+      <button type="submit" [disabled]="loading" class="btn btn-primary">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        Login
+      </button>
+      
+    </form>
+  </div>
+  
