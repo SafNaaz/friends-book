@@ -8,4 +8,5 @@ export class User {
   isAdmin!: boolean;
   lastName!: string;
   photoId!: string;
+  token!: string;
 }

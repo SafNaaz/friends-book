@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
         console.log(data)
         this.loading = false;
         this.loginForm.reset();
-        this.router.navigate(['/']);
+        this.router.navigate(['/posts']);
       },
       error: (error) => {
         this.error = error;
