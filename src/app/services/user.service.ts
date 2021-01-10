@@ -30,4 +30,8 @@ export class UserService {
     return this.findUserByEmail(user.email);
   }
 
+  resetPassword(user: { password: string; id: string }) {
+    return this.http.put<User[]>(`${this.baseUrl}/users/${user.id}`, {password: user.password});
+  }
+
 }

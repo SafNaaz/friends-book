@@ -61,7 +61,7 @@ export class ForgotPasswordComponent implements OnInit {
         if(data.length == 1){
           if(new Date(user.dob).toDateString() === new Date(data[0].dob).toDateString()){
             this.loading = false;
-            this.router.navigateByUrl('reset-password');
+            this.router.navigate(['reset-password'],{ state: { id: data[0].id }});
           } else{
             this.loading = false;
             this.error = 'User Details does not match'

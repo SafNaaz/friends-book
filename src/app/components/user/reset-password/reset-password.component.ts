@@ -16,11 +16,16 @@ export class ResetPasswordComponent implements OnInit {
   loading = false;
   error = '';
 
+  resetPasswordSuccess: boolean = false;
+
+  id : string = ''
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private userService: UserService
   ) {
+    this.id = this.router.getCurrentNavigation()?.extras?.state?.id;
     // if (this.userService.currentUserValue?.token) {
     //   this.router.navigate(['/']);
     // }
@@ -53,23 +58,20 @@ export class ResetPasswordComponent implements OnInit {
     }
 
     let user = {
-      email: this.resetPasswordForm.get('email')?.value,
-      dob: this.resetPasswordForm.get('dob')?.value,
+      id : this.id,
+      password: this.resetPasswordForm.get('password')?.value
     };
 
-    this.userService.forgotPassword(user).subscribe((data : User[]) =>{
-        if(data.length == 1){
-          if(new Date(user.dob).toDateString() === new Date(data[0].dob).toDateString()){
-            this.loading = false;
-            this.router.navigateByUrl('reset-password');
-          } else{
-            this.loading = false;
-            this.error = 'User Details does not match'
-          }
-        }else{
-          this.loading = false;
-          this.error = 'User Not found'
-        }
+    this.userService.resetPassword(user).subscribe({
+      next: () => {
+        this.resetPasswordSuccess = true;
+        this.loading = false;
+        this.resetPasswordForm.reset();
+      },
+      error: (error) => {
+        this.error = error;
+        this.loading = false;
+      },
     })
   }
 
