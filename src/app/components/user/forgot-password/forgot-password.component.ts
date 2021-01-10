@@ -15,7 +15,6 @@ export class ForgotPasswordComponent implements OnInit {
   submitted: boolean = false;
   loading = false;
   error = '';
-  registrationSuccess = false;
 
   constructor(
     private fb: FormBuilder,
