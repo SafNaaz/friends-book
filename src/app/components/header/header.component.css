@@ -5,6 +5,6 @@ nav{
     z-index: 1;
 }
 
-.active a{
-    color: green;
+.active a:visited{
+    color: blue;
 }
