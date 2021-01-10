@@ -9,8 +9,8 @@
           <a class="nav-link" routerLink="/register">Register</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
-            <a *ngIf="!currentUser.token" class="nav-link" routerLink="/login">Login</a>
-            <a *ngIf="currentUser.token" class="nav-link" routerLink="/logout">Logout</a>
+            <a *ngIf="currentUser && !currentUser.token" class="nav-link" routerLink="/login">Login</a>
+            <a *ngIf="currentUser?.token" class="nav-link" (click)="logout()">Logout</a>
         </li>
       </ul>
     </div>
