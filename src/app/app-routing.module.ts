@@ -6,6 +6,7 @@ import { ForgotPasswordComponent } from './components/user/forgot-password/forgo
 import { LoginComponent } from './components/user/login/login.component';
 import { RegistrationComponent } from './components/user/registration/registration.component';
 import { ResetPasswordComponent } from './components/user/reset-password/reset-password.component';
+import { AuthGuard } from './helpers/auth.guard';
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
@@ -18,7 +19,7 @@ const routes: Routes = [
       return import("./social/social.module").then((module)=>{
         return module.SocialModule
       })
-    }
+    }, canActivate: [AuthGuard]
   },
   // user - settings
   // profile settings
