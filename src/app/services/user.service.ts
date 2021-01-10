@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { User } from '../models/user/user';
 import { UserRegistration } from '../models/user/UserRegistration';
 
 @Injectable({
@@ -22,16 +23,11 @@ export class UserService {
   }
 
   findUserByEmail(email: string){
-    return this.http.post(`${this.baseUrl}/users/finduserbyemail`, {email:email});
+    return this.http.post<User[]>(`${this.baseUrl}/users/finduserbyemail`, {email:email});
   }
 
   forgotPassword(user: { email: any; dob: any; }) {
-    this.findUserByEmail(user.email).subscribe((data : any) =>{
-      console.log(data)
-    })
-
-
-    return this.http.put(`${this.baseUrl}/users/`, user);
+    return this.findUserByEmail(user.email);
   }
 
 }

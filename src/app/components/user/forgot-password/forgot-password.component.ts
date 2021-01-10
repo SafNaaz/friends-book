@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DateOfBirthValidator } from 'src/app/helpers/validators/dob-validator/dob.validator';
+import { User } from 'src/app/models/user/user';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -57,18 +58,20 @@ export class ForgotPasswordComponent implements OnInit {
       dob: this.forgotPasswordForm.get('dob')?.value,
     };
 
-    this.userService.forgotPassword(user).subscribe({
-      next: () => {
-        this.registrationSuccess = true;
-        this.loading = false;
-        this.forgotPasswordForm.reset();
-        // this.router.navigate(['/login']);
-      },
-      error: (error) => {
-        this.error = error;
-        this.loading = false;
-      },
-    });
+    this.userService.forgotPassword(user).subscribe((data : User[]) =>{
+        if(data.length == 1){
+          if(new Date(user.dob).toDateString() === new Date(data[0].dob).toDateString()){
+            this.loading = false;
+            this.router.navigateByUrl('reset-password');
+          } else{
+            this.loading = false;
+            this.error = 'User Details does not match'
+          }
+        }else{
+          this.loading = false;
+          this.error = 'User Not found'
+        }
+    })
   }
-
+    
 }
