@@ -15,7 +15,6 @@ import { ErrorInterceptor } from './helpers/interceptors/error.interceptor';
 import { ForgotPasswordComponent } from './components/user/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/user/reset-password/reset-password.component';
 import { NoPageComponent } from './components/no-page/no-page.component';
-import { PostsComponent } from './components/post/posts/posts.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +27,6 @@ import { PostsComponent } from './components/post/posts/posts.component';
     ForgotPasswordComponent,
     ResetPasswordComponent,
     NoPageComponent,
-    PostsComponent,
   ],
   imports: [
     BrowserModule,
