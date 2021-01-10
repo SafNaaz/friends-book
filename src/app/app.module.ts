@@ -14,6 +14,7 @@ import { JwtInterceptor } from './helpers/interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './helpers/interceptors/error.interceptor';
 import { ForgotPasswordComponent } from './components/user/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/user/reset-password/reset-password.component';
+import { NoPageComponent } from './components/no-page/no-page.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ResetPasswordComponent } from './components/user/reset-password/reset-p
     HomepageComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
+    NoPageComponent,
   ],
   imports: [
     BrowserModule,
