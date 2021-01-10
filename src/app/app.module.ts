@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HomepageComponent } from './components/home/homepage/homepage.component';
 import { JwtInterceptor } from './helpers/interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './helpers/interceptors/error.interceptor';
+import { ForgotPasswordComponent } from './components/user/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ErrorInterceptor } from './helpers/interceptors/error.interceptor';
     HeaderComponent,
     FooterComponent,
     HomepageComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,

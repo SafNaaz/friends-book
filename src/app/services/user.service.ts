@@ -21,4 +21,17 @@ export class UserService {
     return this.http.post(`${this.baseUrl}/users/authenticate`, user);
   }
 
+  findUserByEmail(email: string){
+    return this.http.post(`${this.baseUrl}/users/finduserbyemail`, {email:email});
+  }
+
+  forgotPassword(user: { email: any; dob: any; }) {
+    this.findUserByEmail(user.email).subscribe((data : any) =>{
+      console.log(data)
+    })
+
+
+    return this.http.put(`${this.baseUrl}/users/`, user);
+  }
+
 }
