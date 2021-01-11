@@ -21,9 +21,9 @@ export class ForgotPasswordComponent implements OnInit {
     private router: Router,
     private userService: UserService
   ) {
-    // if (this.userService.currentUserValue?.token) {
-    //   this.router.navigate(['/']);
-    // }
+    if (this.userService.currentUserValue?.token) {
+      this.router.navigate(['/social/posts']);
+    }
   }
 
   ngOnInit(): void {}

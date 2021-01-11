@@ -26,9 +26,9 @@ export class ResetPasswordComponent implements OnInit {
     private userService: UserService
   ) {
     this.id = this.router.getCurrentNavigation()?.extras?.state?.id;
-    // if (this.userService.currentUserValue?.token) {
-    //   this.router.navigate(['/']);
-    // }
+    if (this.userService.currentUserValue?.token) {
+      this.router.navigate(['/social/posts']);
+    }
   }
 
   ngOnInit(): void {}
