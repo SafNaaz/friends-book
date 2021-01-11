@@ -37,7 +37,7 @@ export class FriendComponent implements OnInit {
       this.friend = true;
     }
 
-    this.userService.findUserById(this.user.userId).subscribe((data : User) =>{
+    this.userService.findUserById(this.user.friendId).subscribe((data : User) =>{
       this.userDetails = data;
       this.loading = false;
       this.getUserImage(data.photoId);
