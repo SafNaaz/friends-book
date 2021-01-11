@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light pr-5 pl-5">
-  <span class="navbar-brand mb-0 h1"><a routerLink="/">Friends Book</a></span>
+  <span class="navbar-brand mb-0 h1"><a *ngIf="currentUser?.token" routerLink="/social/posts">Friends Book</a></span>
+  <span class="navbar-brand mb-0 h1"><a *ngIf="!currentUser?.token" routerLink="/">Friends Book</a></span>
   <button
     class="navbar-toggler"
     type="button"
