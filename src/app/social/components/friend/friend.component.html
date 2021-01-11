@@ -20,7 +20,6 @@
     </div>
     <div class="card-block px-2">
         <h4 class="card-title">{{userDetails.firstName}} {{userDetails.lastName}}</h4>
-        <p class="card-text">Description</p>
         <a *ngIf="requestPending" href="#" class="btn btn-primary">Request Pending</a>
         <a *ngIf="!friend && !requestPending" href="#" class="btn btn-primary">Send Request</a>
     </div>

@@ -1,1 +1,10 @@
-<p>friends works!</p>
+<ul>
+    <div *ngIf=loading class="spin">
+      <span class="spinner-border spinner-border"></span>
+  </div>
+  
+      <li *ngFor="let user of users">
+        <app-friend [user]="user"></app-friend>
+        
+      </li>
+  </ul>

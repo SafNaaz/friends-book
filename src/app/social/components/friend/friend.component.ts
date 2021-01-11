@@ -33,7 +33,7 @@ export class FriendComponent implements OnInit {
 
     if(this.user.status === "Request Pending"){
       this.requestPending = true;
-    } else if((this.user.status === "You are a friend")){
+    } else if((this.user.status === "You are friend")){
       this.friend = true;
     }
 

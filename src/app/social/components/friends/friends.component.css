@@ -1,0 +1,15 @@
+.spin{
+    margin-top: 20px;
+    text-align: center;
+}
+
+ul{
+    list-style: none;
+}
+
+@media only screen and (max-width: 695px) {
+    ul {
+        padding-left: 10px;
+    }
+    
+}

@@ -22,19 +22,12 @@ export class NetworkComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // console.log(this.userService)
     this.currentUser = this.userService.currentUserValue;
     this.friendService.getAllUsers().subscribe((data : Friend[]) =>{
-      // for(let user of data){
-      //   console.log('userId from system: '+user.userId)
-      //   console.log('userId from current user: '+this.currentUser._id)
-      //   if(user.userId === this.currentUser?._id){
-      //     this.users.push(user);
-      //   }
-      // }
+      this.users = data.filter(user =>{
+        return user.status !== "You are friend"
+      })
       this.loading = false;
-      this.users = data
     })
   }
-
 }
