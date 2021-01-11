@@ -13,6 +13,7 @@ export class SocialComponent implements OnInit {
 
   currentUser: User = new User;
   photoId : any;
+  imageLoaded: boolean = false;
 
   constructor(private userService: UserService,
               private postService: PostService,
@@ -28,6 +29,7 @@ export class SocialComponent implements OnInit {
    this.postService.getUserImage(this.currentUser.photoId).subscribe(blob => {
     var urlCreator = window.URL;
     this.photoId = this.sanitizer.bypassSecurityTrustUrl(urlCreator.createObjectURL(blob));
+    this.imageLoaded = true;
    })
   }
 

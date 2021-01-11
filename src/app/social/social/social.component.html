@@ -3,7 +3,11 @@
 
     <div class="col-md-3">
       <div class="card" style="width: 18rem">
+        <div *ngIf=!imageLoaded>
+          <span class="spinner-border spinner-border m-5"></span>
+        </div>
         <img
+          *ngIf=imageLoaded
           class="card-img-top"
           [src]='photoId'
           alt="Card image cap"
