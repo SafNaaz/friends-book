@@ -19,4 +19,8 @@ export class PostService {
   getAllPosts() {
     return this.http.get<Post[]>(`${this.baseUrl}/posts`);
   }
+
+  getPostsByUserId(id: string){
+    return this.http.post<Post[]>(`${this.baseUrl}/posts/findpostbyuserid`,{id:id});
+  }
 }

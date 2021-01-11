@@ -25,7 +25,10 @@
             <span class="spinner-border spinner-border-sm"></span>
           </li>
           <li *ngIf=connectionsLoaded class="list-group-item">{{connections}} Connections</li>
-          <li class="list-group-item">{{posts}} Posts</li>
+          <li *ngIf=!postLoaded class="list-group-item">
+            <span class="spinner-border spinner-border-sm"></span>
+          </li>
+          <li *ngIf=postLoaded class="list-group-item">{{posts}} Posts</li>
         </ul>
       </div>
     </div>
