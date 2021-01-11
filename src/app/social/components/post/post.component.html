@@ -1,60 +1,23 @@
 <div class="card mb-3">
-    <!-- <div *ngIf=!userImageLoaded>
-        <span class="spinner-border spinner-border m-5"></span>
-      </div>
-    <img
-     *ngIf="userImageLoaded"
-              class="card-img-top"
-              [src]='userImage'
-              alt="Card image cap"
-              width="100" height="200"
-            /> -->
-    <div class="card-body">
-      <h5 class="card-title">{{post.userName}}</h5>
-      <p class="card-text">{{post.post}}</p>
-      <p class="card-text"><small class="text-muted">{{post.createdDate}}</small></p>
-      <div *ngIf=!postImageLoaded>
-        <span class="spinner-border spinner-border m-5"></span>
-      </div>
-      <div style="width: 25rem">
-
-      
-    <img
-     *ngIf="postImageLoaded && !postHasNoImage"
-              class="card-img-top"
-              [src]='postImage'
-              alt="Card image cap"
-              max-width='23rem'
-              max-height='23rem'
-            />
-          </div>
+  <div class="card-body">
+    <h6 class="card-title">{{ post.userName }}</h6>
+    <p class="card-text">
+      <small class="text-muted">{{ post.createdDate | date }}</small>
+    </p>
+    <p class="card-text">{{ post.post }}</p>
+    <div *ngIf="!postImageLoaded">
+      <span class="spinner-border spinner-border m-5"></span>
     </div>
+    <div style="width: 25rem">
+      <img
+        *ngIf="postImageLoaded && !postHasNoImage"
+        class="card-img-top"
+        [src]="postImage"
+        alt="Card image cap"
+        max-width="23rem"
+        max-height="23rem"
+      />
+    </div>
+   
   </div>
-<!-- 
-<p>{{post.userName}}</p>
-
-<div *ngIf=!userImageLoaded>
-    <span class="spinner-border spinner-border m-5"></span>
-  </div>
-<img
- *ngIf="userImageLoaded"
-          class="card-img-top"
-          [src]='userImage'
-          alt="Card image cap"
-          width="100" height="200"
-        />
-
-
-<hr>
-<p>{{post.post}}</p>
-
-<div *ngIf=!postImageLoaded>
-    <span class="spinner-border spinner-border m-5"></span>
-  </div>
-<img
- *ngIf="postImageLoaded"
-          class="card-img-top"
-          [src]='postImage'
-          alt="Card image cap"
-          width="100" height="200"
-        /> -->
+</div>

@@ -3,5 +3,8 @@
     <span class="spinner-border spinner-border"></span>
 </div>
 
-    <li *ngFor="let user of users">{{user.id}}</li>
+    <li *ngFor="let user of users">
+      <app-friend [user]="user"></app-friend>
+      
+    </li>
 </ul>
