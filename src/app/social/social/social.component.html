@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
 
-    <div class="col-md-3">
+    <div class="col-md-3 profile">
       <div class="card" style="width: 18rem">
         <div *ngIf=!imageLoaded>
           <span class="spinner-border spinner-border m-5"></span>
@@ -30,7 +30,7 @@
       </div>
     </div>
 
-    <div class="col-md-9"><router-outlet></router-outlet></div>
+    <div class="col-md-9 content"><router-outlet></router-outlet></div>
 
   </div>
 </div>
