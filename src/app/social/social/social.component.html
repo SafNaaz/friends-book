@@ -3,15 +3,17 @@
 
     <div class="col-md-3 profile">
       <div class="card" style="width: 18rem">
+        <div class="profile-pic-cont">
         <div *ngIf=!imageLoaded>
           <span class="spinner-border spinner-border m-5"></span>
         </div>
         <img
           *ngIf=imageLoaded
-          class="card-img-top"
+          class="card-img-top profile-pic"
           [src]='photoId'
           alt="Card image cap"
         />
+      </div>
         <div class="card-body">
           <h5 class="card-title">
             {{ currentUser.firstName }} {{ currentUser.lastName }}

@@ -1,9 +1,21 @@
 .profile{
+    margin-left: 20px;
     position:fixed;
 }
 
+.profile-pic{
+    max-width: 16rem;
+}
+
+.profile-pic-cont{
+    margin-top: 1rem;
+    margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
 .content{
-    margin-left: 300px;
+    margin-left: 350px;
     margin-right: 10px;
     overflow: auto;
 }
