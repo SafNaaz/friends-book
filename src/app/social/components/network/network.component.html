@@ -1,3 +1,6 @@
 <ul>
+    <div *ngIf=loading>
+        <span class="spinner-border spinner-border m-5"></span>
+      </div>
     <li *ngFor="let user of users">{{user.id}}</li>
 </ul>

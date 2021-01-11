@@ -15,6 +15,8 @@ export class NetworkComponent implements OnInit {
   users : Friend[] = []
   currentUser : User = new User;
 
+  loading: boolean = true;
+
   constructor(private friendService: FriendsService,
               private userService: UserService) { 
   }
@@ -30,6 +32,7 @@ export class NetworkComponent implements OnInit {
       //     this.users.push(user);
       //   }
       // }
+      this.loading = false;
       this.users = data
     })
   }
