@@ -26,6 +26,8 @@ export class FriendsComponent implements OnInit {
       this.loading = false;
       console.log(data)
       this.users = data.filter(user =>{
+        //TODO show friends of current user alone
+        // return user.status === "You are friend" && user.userId === this.currentUser._id
         return user.status === "You are friend"
       })
     })

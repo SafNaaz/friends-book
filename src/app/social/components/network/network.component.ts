@@ -25,6 +25,8 @@ export class NetworkComponent implements OnInit {
     this.currentUser = this.userService.currentUserValue;
     this.friendService.getAllUsers().subscribe((data : Friend[]) =>{
       this.users = data.filter(user =>{
+        //TODO show request pending to only user requested ones
+        //return user.status !== "You are friend" && user.userId === this.currentUser._id
         return user.status !== "You are friend"
       })
       this.loading = false;
