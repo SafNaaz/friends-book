@@ -1,8 +1,8 @@
 <ul>
     <!-- <li *ngFor="let post of posts">{{post.post}}</li> -->
-    <div *ngIf=loading>
-        <span class="spinner-border spinner-border m-5"></span>
-      </div>
+    <div *ngIf=loading class="spin">
+        <span class="spinner-border spinner-border"></span>
+    </div>
     <li *ngFor="let post of posts"><app-post [post]="post"></app-post></li>
-    
+  
 </ul>
