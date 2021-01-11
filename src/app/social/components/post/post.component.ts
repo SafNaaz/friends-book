@@ -23,6 +23,7 @@ export class PostComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPostImage();
+    this. getUserImage();
   }
 
   getPostImage(){
