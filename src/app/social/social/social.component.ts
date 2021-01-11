@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { User } from 'src/app/models/user/user';
 import { UserService } from 'src/app/services/user.service';
+import { Friend } from '../models/friend';
+import { FriendsService } from '../services/friends.service';
 import { PostService } from '../services/post.service';
 
 @Component({
@@ -15,14 +17,21 @@ export class SocialComponent implements OnInit {
   photoId : any;
   imageLoaded: boolean = false;
 
+  connections: number = 0
+  connectionsLoaded: boolean = false;
+
+  posts: number = 0;
+
   constructor(private userService: UserService,
               private postService: PostService,
+              private friendService: FriendsService,
               private sanitizer: DomSanitizer) { 
     this.userService.currentUser.subscribe(x => this.currentUser = x);
   }
 
   ngOnInit(): void {
     this.getImage()
+    this.getConnections()
   }
 
   getImage(){
@@ -32,5 +41,14 @@ export class SocialComponent implements OnInit {
     this.imageLoaded = true;
    })
   }
+
+  getConnections(){
+  this.friendService.getAllUsers().subscribe((data : Friend[]) =>{
+    this.connectionsLoaded = true;
+    this.connections = data.filter(user =>{
+      return user.status === "You are friend"
+    }).length
+  })
+}
 
 }
