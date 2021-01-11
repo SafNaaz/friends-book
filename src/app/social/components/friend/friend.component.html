@@ -1,14 +1,27 @@
-<div class="card flex-row flex-wrap">
+<div *ngIf=loading class="spin mt-2">
+    <span class="spinner-border spinner-border"></span>
+</div>
+
+<div *ngIf="!loading" class="card flex-row flex-wrap mt-2">
     <div class="card-header border-0">
-        <img src="//placehold.it/200" alt="">
+        <div *ngIf="!userImageLoaded">
+            <span class="spinner-border spinner-border m-5"></span>
+          </div>
+          <div style="width: 10rem">
+            <img
+              *ngIf="userImageLoaded"
+              class="card-img-top"
+              [src]="userImage"
+              alt="Card image cap"
+              max-width="23rem"
+              max-height="23rem"
+            />
+          </div>
     </div>
     <div class="card-block px-2">
-        <h4 class="card-title">{{user.id}}</h4>
+        <h4 class="card-title">{{userDetails.firstName}} {{userDetails.lastName}}</h4>
         <p class="card-text">Description</p>
-        <a href="#" class="btn btn-primary">BUTTON</a>
-    </div>
-    <div class="w-100"></div>
-    <div class="card-footer w-100 text-muted">
-        FOOTER
+        <a *ngIf="requestPending" href="#" class="btn btn-primary">Request Pending</a>
+        <a *ngIf="!friend && !requestPending" href="#" class="btn btn-primary">Send Request</a>
     </div>
 </div>

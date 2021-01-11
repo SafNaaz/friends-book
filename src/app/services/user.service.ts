@@ -9,6 +9,7 @@ import { UserRegistration } from '../models/user/UserRegistration';
   providedIn: 'root',
 })
 export class UserService {
+  
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 
@@ -45,6 +46,10 @@ export class UserService {
     return this.http.post<User[]>(`${this.baseUrl}/users/finduserbyemail`, {
       email: email,
     });
+  }
+
+  findUserById(id: string) {
+    return this.http.get<User>(`${this.baseUrl}/users/${id}`);
   }
 
   forgotPassword(user: { email: any; dob: any }) {
