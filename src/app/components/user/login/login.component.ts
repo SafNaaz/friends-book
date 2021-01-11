@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -14,14 +14,19 @@ export class LoginComponent implements OnInit {
   loading = false;
   error = '';
 
+  returnUrl: string = ''
+
   constructor(private userService: UserService,
               private fb: FormBuilder,
+              private route: ActivatedRoute,
               private router: Router) { }
 
   ngOnInit(): void {
     if (this.userService.currentUserValue?.token) {
       this.router.navigate(['/social/posts']);
     }
+
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/social/posts';
   }
 
   get f() {
@@ -53,7 +58,7 @@ export class LoginComponent implements OnInit {
         console.log(data)
         this.loading = false;
         this.loginForm.reset();
-        this.router.navigate(['/social/posts']);
+        this.router.navigate([this.returnUrl]);
       },
       error: (error) => {
         this.error = error;
