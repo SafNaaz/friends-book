@@ -19,6 +19,9 @@ export class LoginComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
+    if (this.userService.currentUserValue?.token) {
+      this.router.navigate(['/social/posts']);
+    }
   }
 
   get f() {
