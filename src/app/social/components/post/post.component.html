@@ -1,5 +1,5 @@
 <div class="card mb-3">
-    <div *ngIf=!userImageLoaded>
+    <!-- <div *ngIf=!userImageLoaded>
         <span class="spinner-border spinner-border m-5"></span>
       </div>
     <img
@@ -8,7 +8,7 @@
               [src]='userImage'
               alt="Card image cap"
               width="100" height="200"
-            />
+            /> -->
     <div class="card-body">
       <h5 class="card-title">{{post.userName}}</h5>
       <p class="card-text">{{post.post}}</p>
@@ -16,13 +16,16 @@
       <div *ngIf=!postImageLoaded>
         <span class="spinner-border spinner-border m-5"></span>
       </div>
+      <div style="width: 25rem">
+
+      
     <img
-     *ngIf="postImageLoaded"
+     *ngIf="postImageLoaded && !postHasNoImage"
               class="card-img-top"
               [src]='postImage'
               alt="Card image cap"
-              width="100" height="200"
             />
+          </div>
     </div>
   </div>
 <!-- 
