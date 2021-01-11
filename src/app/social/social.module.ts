@@ -8,10 +8,11 @@ import { FriendsComponent } from './components/friends/friends.component';
 import { UsersComponent } from './components/users/users.component';
 import { SocialComponent } from './social/social.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PostComponent } from './components/post/post.component';
 
 
 @NgModule({
-  declarations: [PostsComponent, NetworkComponent, FriendsComponent, UsersComponent, SocialComponent],
+  declarations: [PostsComponent, NetworkComponent, FriendsComponent, UsersComponent, SocialComponent, PostComponent],
   imports: [
     CommonModule,
     SocialRoutingModule,
