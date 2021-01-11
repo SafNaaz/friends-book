@@ -26,7 +26,7 @@ export class SocialComponent implements OnInit {
   }
 
   getImage(){
-   this.postService.getUserImage(this.currentUser.photoId).subscribe(blob => {
+   this.postService.getImage(this.currentUser.photoId).subscribe(blob => {
     var urlCreator = window.URL;
     this.photoId = this.sanitizer.bypassSecurityTrustUrl(urlCreator.createObjectURL(blob));
     this.imageLoaded = true;

@@ -10,7 +10,7 @@ export class PostService {
 
   constructor(private http: HttpClient) {}
 
-  getUserImage(photoId: string) {
+  getImage(photoId: string) {
     return this.http.get(`${this.baseUrl}/files/` + photoId, {
       responseType: 'blob',
     });

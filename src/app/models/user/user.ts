@@ -3,7 +3,7 @@ export class User {
   email!: string;
   firstName!: string;
   gender!: string;
-  id!: string;
+  _id!: string;
   isActive!: boolean;
   isAdmin!: boolean;
   lastName!: string;

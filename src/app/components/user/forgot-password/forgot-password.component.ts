@@ -57,7 +57,7 @@ export class ForgotPasswordComponent implements OnInit {
       dob: this.forgotPasswordForm.get('dob')?.value,
     };
 
-    this.userService.forgotPassword(user).subscribe((data : User[]) =>{
+    this.userService.forgotPassword(user).subscribe((data : any) =>{
         if(data.length == 1){
           if(new Date(user.dob).toDateString() === new Date(data[0].dob).toDateString()){
             this.loading = false;
