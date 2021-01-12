@@ -24,6 +24,9 @@ export class PostComponent implements OnInit {
 
   postOfCurrentUser: boolean = false;
 
+  operation: string = 'edit';
+  editMode: boolean = false;
+
   constructor(
     private postService: PostService,
     private userService: UserService,
@@ -62,4 +65,12 @@ export class PostComponent implements OnInit {
   //    this.userImageLoaded = true;
   //   })
   //  }
+
+  onEdit(){
+    this.editMode = true;
+  }
+
+  onCancel(){
+    this.editMode = false;
+  }
 }

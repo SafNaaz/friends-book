@@ -13,6 +13,7 @@ import { PostService } from '../../services/post.service';
 export class AddPostComponent implements OnInit {
 
   @Input() operation!: string;
+  @Input() post!: Post;
 
   currentUser: User = new User;
 
@@ -27,6 +28,11 @@ export class AddPostComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.userService.currentUserValue;
+    if(this.operation === 'edit'){
+      this.addPostForm.patchValue({
+        post:[this.post?.post]
+      })
+    }
   }
 
   get f() {
@@ -57,6 +63,7 @@ export class AddPostComponent implements OnInit {
     post.postImageId = this.addPostForm.get('postImage')?this.addPostForm.get('postImage')?.value : '';
     post.profession = 'Programmer'
     post.userPhotoId = this.currentUser.photoId;
+    post.id = this.post.id;
 
     this.postService.addPost(post, this.operation).subscribe({
       next: () => {
@@ -71,6 +78,10 @@ export class AddPostComponent implements OnInit {
         this.loading = false;
       },
     });
+  }
+
+  onEdit(){
+    
   }
 
 }

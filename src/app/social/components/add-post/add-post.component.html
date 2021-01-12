@@ -34,7 +34,7 @@
           Can't post an empty mind.
         </div>
       </div>
-      <button
+      <button *ngIf="operation=='add'"
         type="submit"
         [disabled]="loading && !addPostSuccess"
         class="btn btn-primary"
@@ -44,6 +44,17 @@
           class="spinner-border spinner-border-sm mr-1"
         ></span>
         Add New Post
+      </button>
+      <button *ngIf="operation=='edit'"
+        type="submit"
+        [disabled]="loading && !addPostSuccess"
+        class="btn btn-primary"
+      >
+        <span
+          *ngIf="loading"
+          class="spinner-border spinner-border-sm mr-1"
+        ></span>
+        Update Post
       </button>
     </form>
   </div>
