@@ -36,8 +36,12 @@ export class PostService {
     return this.http.post<Post[]>(`${this.baseUrl}/posts/findpostbyuserid`,{id:id});
   }
 
-  addPost(post: Post) {
-    return this.http.post(`${this.baseUrl}/posts/createpost`,post);
+  addPost(post: Post, operation: string) {
+    if(operation === 'add'){
+      return this.http.post(`${this.baseUrl}/posts/createpost`,post);
+    }else{
+      return this.http.put(`${this.baseUrl}/posts/${post.id}`,post);
+    }
   }
 
 }

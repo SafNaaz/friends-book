@@ -18,6 +18,67 @@
         max-height="23rem"
       />
     </div>
+
+    <!-- <div *ngIf="postOfCurrentUser">
+    <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{ error }}</div>
+    <div *ngIf="addPostSuccess">
+      <div class="alert alert-success mt-3 mb-0">
+        New Post Added
+      </div>
+    </div>
+    <form
+      class="mt-4"
+      [formGroup]="addPostForm"
+      novalidate
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="form-group form-group-sm">
+        <input
+          type="text"
+          class="form-control"
+          [ngClass]="
+            f.post?.invalid && (submitted && !addPostSuccess)
+              ? 'is-invalid'
+              : f.post?.valid
+              ? 'is-valid'
+              : ''
+          "
+          id="post"
+          placeholder="What's on your mind?"
+          name="post"
+          formControlName="post"
+          minlength="2"
+          required
+        />
+        <div *ngIf="f.post?.errors?.required" class="invalid-feedback">
+          Can't post an empty mind.
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="loading && !addPostSuccess"
+        class="btn btn-primary"
+      >
+        <span
+          *ngIf="loading"
+          class="spinner-border spinner-border-sm mr-1"
+        ></span>
+        Edit Post
+      </button>
+      <button
+        type="submit"
+        [disabled]="loading && !addPostSuccess"
+        class="btn btn-primary"
+      >
+        <span
+          *ngIf="loading"
+          class="spinner-border spinner-border-sm mr-1"
+        ></span>
+        Delete Post
+      </button>
+    </form>
+  </div> -->
    
   </div>
 </div>

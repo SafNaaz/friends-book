@@ -16,6 +16,8 @@ export class PostsComponent implements OnInit {
 
   loading: boolean = true;
 
+  operation = "add"
+
   // friends : Friend[] = []
 
   // currentUser: User = new User;

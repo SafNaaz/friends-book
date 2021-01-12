@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { User } from 'src/app/models/user/user';
+import { UserService } from 'src/app/services/user.service';
 import { Post } from '../../models/post';
 import { PostService } from '../../services/post.service';
 
@@ -18,14 +20,23 @@ export class PostComponent implements OnInit {
   postHasNoImage: boolean = false;
   // userImageLoaded: boolean = false;
 
+  currentUser: User = new User;
+
+  postOfCurrentUser: boolean = false;
+
   constructor(
     private postService: PostService,
+    private userService: UserService,
     private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
     this.getPostImage();
     // this. getUserImage();
+    this.currentUser = this.userService.currentUserValue
+    if(this.currentUser._id === this.post.userId){
+      this.postOfCurrentUser= true;
+    }
   }
 
   getPostImage() {

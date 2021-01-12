@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user/user';
 import { UserService } from 'src/app/services/user.service';
@@ -11,6 +11,8 @@ import { PostService } from '../../services/post.service';
   styleUrls: ['./add-post.component.css']
 })
 export class AddPostComponent implements OnInit {
+
+  @Input() operation!: string;
 
   currentUser: User = new User;
 
@@ -56,7 +58,7 @@ export class AddPostComponent implements OnInit {
     post.profession = 'Programmer'
     post.userPhotoId = this.currentUser.photoId;
 
-    this.postService.addPost(post).subscribe({
+    this.postService.addPost(post, this.operation).subscribe({
       next: () => {
         this.addPostSuccess = true;
         this.loading = false;
