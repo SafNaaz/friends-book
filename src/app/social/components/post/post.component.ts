@@ -26,8 +26,11 @@ export class PostComponent implements OnInit {
 
   operation: string = 'edit';
   editMode: boolean = false;
+  deleteMode: boolean = false;
 
   loading: boolean = false;
+
+  deleteSuccess : boolean = false;
 
   constructor(
     private postService: PostService,
@@ -78,8 +81,11 @@ export class PostComponent implements OnInit {
 
   onDelete(){
     this.loading = true;
+    this.deleteMode= true;
     this.postService.delete(this.post.id).subscribe((data)=>{
       this.editMode = false;
+      this.deleteMode= false;
+      this.deleteSuccess= true;
       this.loading = false;
       this.postService.getAllPosts();
     })

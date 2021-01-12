@@ -1,4 +1,4 @@
-<div class="card mb-3">
+<div *ngIf="!deleteSuccess" class="card mb-3">
   <div class="card-body">
     <h6 class="card-title">{{ post.userName }}</h6>
     <p class="card-text" *ngIf="!editMode">
@@ -43,7 +43,7 @@
         Delete
       </button>
       <button
-        *ngIf="!editMode"
+        *ngIf="!editMode && !deleteMode"
         type="submit"
         class="btn btn-primary mr-2 float-right"
         (click)="onEdit()"
