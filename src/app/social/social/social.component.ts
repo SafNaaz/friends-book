@@ -30,6 +30,7 @@ export class SocialComponent implements OnInit {
     private sanitizer: DomSanitizer
   ) {
     this.userService.currentUser.subscribe((x) => (this.currentUser = x));
+    this.postService.getPosts().subscribe(()=>this.getPosts());
   }
 
   ngOnInit(): void {
