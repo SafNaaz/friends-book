@@ -63,7 +63,9 @@ export class AddPostComponent implements OnInit {
     post.postImageId = this.addPostForm.get('postImage')?this.addPostForm.get('postImage')?.value : '';
     post.profession = 'Programmer'
     post.userPhotoId = this.currentUser.photoId;
-    post.id = this.post.id;
+    if(this.operation === 'edit'){
+      post.id = this.post.id;
+    }
 
     this.postService.addPost(post, this.operation).subscribe({
       next: () => {
@@ -78,10 +80,6 @@ export class AddPostComponent implements OnInit {
         this.loading = false;
       },
     });
-  }
-
-  onEdit(){
-    
   }
 
 }
