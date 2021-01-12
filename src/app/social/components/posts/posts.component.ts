@@ -9,11 +9,10 @@ import { PostService } from '../../services/post.service';
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.css']
+  styleUrls: ['./posts.component.css'],
 })
 export class PostsComponent implements OnInit {
-
-  posts : Post[] = [];
+  posts: Post[] = [];
 
   loading: boolean = true;
 
@@ -21,13 +20,14 @@ export class PostsComponent implements OnInit {
 
   // currentUser: User = new User;
 
-  constructor(private postService: PostService,
-              // private friendService: FriendsService,
-              // private userService: UserService
-              ) { }
+  interval: any;
+  constructor(
+    private postService: PostService
+  ) // private friendService: FriendsService,
+  // private userService: UserService
+  {}
 
   ngOnInit(): void {
-
     // this.currentUser = this.userService.currentUserValue;
 
     // this.friendService.getAllUsers().subscribe((data : Friend[]) =>{
@@ -38,19 +38,32 @@ export class PostsComponent implements OnInit {
     //   })
     // })
 
-    this.postService.getPosts().subscribe((post : Post[]) =>{
-      post.forEach(data =>{
-        //TODO show posts by user's friends only
-        // this.friends.forEach(friend =>{
-          // if(friend.friendId === data.userId){
-            this.posts.push(data);
-            this.posts.sort((a,b)=> (new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime()));
-          // }
-        // })
-      })
-
-      this.loading = false;
-    })
+    this.refreshData();
+    this.interval = setInterval(() => {
+      this.loading = true;
+      this.postService.getAllPosts()
+      this.refreshData();
+    }, 300000);
   }
 
+  refreshData() {
+    this.postService.getPosts().subscribe((posts: Post[]) => {
+      // post.forEach((data) => {
+        //TODO show posts by user's friends only
+        // this.friends.forEach(friend =>{
+        // if(friend.friendId === data.userId){
+        this.posts = posts;
+        this.posts.sort(
+          (a, b) =>
+            new Date(b.createdDate).getTime() -
+            new Date(a.createdDate).getTime()
+        );
+        this.loading = false;
+        // }
+        // })
+      });
+
+     
+    // });
+  }
 }
