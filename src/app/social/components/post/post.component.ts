@@ -27,6 +27,8 @@ export class PostComponent implements OnInit {
   operation: string = 'edit';
   editMode: boolean = false;
 
+  loading: boolean = false;
+
   constructor(
     private postService: PostService,
     private userService: UserService,
@@ -72,5 +74,15 @@ export class PostComponent implements OnInit {
 
   onCancel(){
     this.editMode = false;
+  }
+
+  onDelete(){
+    this.loading = true;
+    this.postService.delete(this.post.id).subscribe((data)=>{
+      this.editMode = false;
+      this.loading = false;
+      this.postService.getAllPosts();
+    })
+    
   }
 }

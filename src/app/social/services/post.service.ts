@@ -44,4 +44,8 @@ export class PostService {
     }
   }
 
+  delete(id: string) {
+    return this.http.delete(`${this.baseUrl}/posts/${id}`);
+  }
+
 }
