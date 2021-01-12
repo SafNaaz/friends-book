@@ -1,16 +1,20 @@
 <div class="card mb-3">
   <div class="card-body">
-    <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{ error }}</div>
+    <div *ngIf="error" class="alert alert-danger mt-3 mb-0">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      {{ error }}</div>
     <div *ngIf="addPostSuccess">
       <div  *ngIf="operation=='add'" class="alert alert-success mt-3 mb-0">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
         New Post Added
       </div>
       <div  *ngIf="operation=='edit'" class="alert alert-success mt-3 mb-0">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
         Post Edited
       </div>
     </div>
     <form
-    *ngIf="!addPostSuccess"
+    *ngIf="!editPostSuccess"
       class="mt-4"
       [formGroup]="addPostForm"
       novalidate

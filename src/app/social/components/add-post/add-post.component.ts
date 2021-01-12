@@ -21,6 +21,7 @@ export class AddPostComponent implements OnInit {
   loading = false;
   error = '';
   addPostSuccess = false;
+  editPostSuccess = false;
 
   constructor(private fb: FormBuilder,
               private postService: PostService,
@@ -69,6 +70,9 @@ export class AddPostComponent implements OnInit {
 
     this.postService.addPost(post, this.operation).subscribe({
       next: () => {
+        if(this.operation === 'edit'){
+          this.editPostSuccess = true;
+        }
         this.addPostSuccess = true;
         this.loading = false;
         this.addPostForm.get('post')?.reset()
