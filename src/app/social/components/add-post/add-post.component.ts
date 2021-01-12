@@ -1,0 +1,74 @@
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { User } from 'src/app/models/user/user';
+import { UserService } from 'src/app/services/user.service';
+import { Post } from '../../models/post';
+import { PostService } from '../../services/post.service';
+
+@Component({
+  selector: 'app-add-post',
+  templateUrl: './add-post.component.html',
+  styleUrls: ['./add-post.component.css']
+})
+export class AddPostComponent implements OnInit {
+
+  currentUser: User = new User;
+
+  submitted: boolean = false;
+  loading = false;
+  error = '';
+  addPostSuccess = false;
+
+  constructor(private fb: FormBuilder,
+              private postService: PostService,
+              private userService: UserService) { }
+
+  ngOnInit(): void {
+    this.currentUser = this.userService.currentUserValue;
+  }
+
+  get f() {
+    return this.addPostForm.controls;
+  }
+
+  addPostForm = this.fb.group(
+    {
+      post: ['', [Validators.required, Validators.minLength(2)]],
+    }
+  );
+
+  onSubmit() {
+    this.submitted = true;
+    this.loading = true;
+    if (this.addPostForm.invalid) {
+      this.loading = false;
+      return;
+    }
+
+
+    let post = new Post();
+    post.isActive = true;
+    post.isAdmin = this.currentUser.isAdmin;
+    post.userId = this.currentUser._id;
+    post.userName = this.currentUser.firstName+' '+this.currentUser.lastName;
+    post.post = this.addPostForm.get('post')?.value;
+    post.postImageId = this.addPostForm.get('postImage')?this.addPostForm.get('postImage')?.value : '';
+    post.profession = 'Programmer'
+    post.userPhotoId = this.currentUser.photoId;
+
+    this.postService.addPost(post).subscribe({
+      next: () => {
+        this.addPostSuccess = true;
+        this.loading = false;
+        this.addPostForm.get('post')?.reset()
+        this.postService.getAllPosts();
+        // this.router.navigate(['/login']);
+      },
+      error: (error) => {
+        this.error = error;
+        this.loading = false;
+      },
+    });
+  }
+
+}

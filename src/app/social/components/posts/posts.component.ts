@@ -38,8 +38,8 @@ export class PostsComponent implements OnInit {
     //   })
     // })
 
-    this.postService.getAllPosts().subscribe((data : Post[]) =>{
-      data.forEach(data =>{
+    this.postService.getPosts().subscribe((post : Post[]) =>{
+      post.forEach(data =>{
         //TODO show posts by user's friends only
         // this.friends.forEach(friend =>{
           // if(friend.friendId === data.userId){

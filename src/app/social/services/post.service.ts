@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable, ReplaySubject } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Post } from '../models/post';
 
 @Injectable({
@@ -8,7 +10,15 @@ import { Post } from '../models/post';
 export class PostService {
   baseUrl = 'https://nodejs-fb-app.herokuapp.com';
 
-  constructor(private http: HttpClient) {}
+  public allPosts = new ReplaySubject<Post[]>(1);
+
+  constructor(private http: HttpClient) {
+    this.getAllPosts()
+  }
+
+  getPosts(){
+    return this.allPosts.asObservable();
+  }
 
   getImage(photoId: string) {
     return this.http.get(`${this.baseUrl}/files/` + photoId, {
@@ -17,10 +27,17 @@ export class PostService {
   }
 
   getAllPosts() {
-    return this.http.get<Post[]>(`${this.baseUrl}/posts`);
+    return this.http.get<Post[]>(`${this.baseUrl}/posts`).subscribe(data=>{
+      return this.allPosts.next(data)
+    })
   }
 
   getPostsByUserId(id: string){
     return this.http.post<Post[]>(`${this.baseUrl}/posts/findpostbyuserid`,{id:id});
   }
+
+  addPost(post: Post) {
+    return this.http.post(`${this.baseUrl}/posts/createpost`,post);
+  }
+
 }
