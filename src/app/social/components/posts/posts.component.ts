@@ -42,7 +42,6 @@ export class PostsComponent implements OnInit {
     this.interval = setInterval(() => {
       this.loading = true;
       this.postService.getAllPosts()
-      this.refreshData();
     }, 300000);
   }
 
@@ -65,5 +64,10 @@ export class PostsComponent implements OnInit {
 
      
     // });
+  }
+
+  checkLatestPosts() {
+    this.loading = true;
+    this.postService.getAllPosts()
   }
 }

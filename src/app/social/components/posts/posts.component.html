@@ -1,4 +1,12 @@
 <app-add-post></app-add-post>
+<button
+        type="submit"
+        class="btn btn-primary"
+        (click)="checkLatestPosts()"
+      >
+       Check for Latest Posts
+      </button>
+      <br><br>
 <ul>
     <!-- <li *ngFor="let post of posts">{{post.post}}</li> -->
     <div *ngIf=loading class="spin">
