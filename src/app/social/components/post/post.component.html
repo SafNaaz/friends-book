@@ -20,29 +20,31 @@
     </div>
 
     <div *ngIf="postOfCurrentUser">
-      <app-add-post *ngIf="editMode" [operation]="operation" [post]="post"></app-add-post>
+      <app-add-post
+        *ngIf="editMode"
+        [operation]="operation"
+        [post]="post"
+      ></app-add-post>
+      
+      
       <button
-      *ngIf="!editMode"
+        *ngIf="editMode"
         type="submit"
-        class="btn btn-primary"
+        class="btn btn-primary float-right"
+        (click)="onCancel()"
+      >
+        Cancel
+      </button>
+      <button *ngIf="!editMode" type="submit" class="btn btn-primary mr-2 float-right">
+        Delete
+      </button>
+      <button
+        *ngIf="!editMode"
+        type="submit"
+        class="btn btn-primary mr-2 float-right"
         (click)="onEdit()"
       >
         Edit
-      </button>
-    <button
-    *ngIf="editMode"
-      type="submit"
-      class="btn btn-primary"
-      (click)="onCancel()"
-    >
-      Cancel
-    </button>
-      <button
-      *ngIf="!editMode"
-        type="submit"
-        class="btn btn-primary"
-      >
-        Delete
       </button>
     </div>
   </div>
