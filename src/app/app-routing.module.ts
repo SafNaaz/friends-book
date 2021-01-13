@@ -7,6 +7,7 @@ import { LoginComponent } from './components/user/login/login.component';
 import { RegistrationComponent } from './components/user/registration/registration.component';
 import { ResetPasswordComponent } from './components/user/reset-password/reset-password.component';
 import { AuthGuard } from './helpers/auth.guard';
+import { SettingModule } from './setting/setting.module';
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
@@ -22,11 +23,7 @@ const routes: Routes = [
     }, canActivate: [AuthGuard]
   },
   {
-    path : "setting", loadChildren : () =>{
-      return import("./setting/setting.module").then((module)=>{
-        return module.SettingModule
-      })
-    }, canActivate: [AuthGuard]
+    path : "setting", loadChildren : () => SettingModule, canActivate: [AuthGuard]
   },
   {path: '**', component: NoPageComponent},
 ];
