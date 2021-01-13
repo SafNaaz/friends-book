@@ -1,0 +1,7 @@
+.active a:visited{
+    color: blue;
+}
+
+a{
+    color: gray;
+}
