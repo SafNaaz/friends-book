@@ -21,9 +21,13 @@ const routes: Routes = [
       })
     }, canActivate: [AuthGuard]
   },
-  // user - settings
-  // profile settings
-  // changepassword
+  {
+    path : "setting", loadChildren : () =>{
+      return import("./setting/setting.module").then((module)=>{
+        return module.SettingModule
+      })
+    }, canActivate: [AuthGuard]
+  },
   {path: '**', component: NoPageComponent},
 ];
 

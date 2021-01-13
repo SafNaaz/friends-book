@@ -41,6 +41,14 @@
           >Friends</a
         >
       </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a
+          *ngIf="currentUser?.token"
+          class="nav-link"
+          routerLink="/setting/profile"
+          >Setting</a
+        >
+      </li>
       <li
         class="nav-item"
         routerLinkActive="active"
