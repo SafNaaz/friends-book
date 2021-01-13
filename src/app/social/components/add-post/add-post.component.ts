@@ -62,7 +62,7 @@ export class AddPostComponent implements OnInit {
     post.userName = this.currentUser.firstName+' '+this.currentUser.lastName;
     post.post = this.addPostForm.get('post')?.value;
     post.postImageId = this.addPostForm.get('postImage')?this.addPostForm.get('postImage')?.value : '';
-    post.profession = this.currentUser.profession;
+    post.profession = this.currentUser.profession? this.currentUser.profession: 'Nil';
     post.userPhotoId = this.currentUser.photoId;
     if(this.operation === 'edit'){
       post.id = this.post.id;
