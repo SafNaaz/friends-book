@@ -6,7 +6,7 @@ import { ForgotPasswordComponent } from './components/user/forgot-password/forgo
 import { LoginComponent } from './components/user/login/login.component';
 import { RegistrationComponent } from './components/user/registration/registration.component';
 import { ResetPasswordComponent } from './components/user/reset-password/reset-password.component';
-import { AuthGuard } from './helpers/auth.guard';
+import { AuthGuard } from './helpers/routeguards/auth.guard';
 import { SettingModule } from './setting/setting.module';
 
 const routes: Routes = [

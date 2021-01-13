@@ -27,6 +27,14 @@
       </li>
       <li class="nav-item" routerLinkActive="active">
         <a
+          *ngIf="currentUser?.isAdmin"
+          class="nav-link"
+          routerLink="/social/users"
+          >Users</a
+        >
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a
           *ngIf="currentUser?.token"
           class="nav-link"
           routerLink="/social/network"
