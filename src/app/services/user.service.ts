@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../models/user/user';
 import { UserRegistration } from '../models/user/UserRegistration';
+import { UserProfile } from '../setting/models/user-profile';
 
 @Injectable({
   providedIn: 'root',
@@ -27,6 +28,10 @@ export class UserService {
 
   register(user: UserRegistration) {
     return this.http.post(`${this.baseUrl}/users/register`, user);
+  }
+
+  updateUser(user: UserProfile) {
+    return this.http.put(`${this.baseUrl}/users/${user.id}`, user);
   }
 
   login(creds: { email: any; password: any }) {

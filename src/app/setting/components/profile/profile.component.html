@@ -1,1 +1,171 @@
-<p>profile works!</p>
+<div class="container mt-3 col-md-6">
+    <h3 *ngIf="!updateSuccess">User Profile</h3>
+    <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+    <div *ngIf="updateSuccess">
+      <div class="alert alert-success mt-3 mb-0">
+          Profile Updated. Please <a routerLink='/login'>Login again</a>
+      </div>
+    </div>
+    
+    <form
+      class="mt-4"
+      [formGroup]="profileForm"
+      novalidate
+      (ngSubmit)="onSubmit()"
+      *ngIf="!updateSuccess"
+    >
+      <div class="form-group form-group-sm">
+        <input
+          type="text"
+          class="form-control"
+          [ngClass]="
+            f.firstName?.invalid &&
+            (f.firstName?.dirty || f.firstName?.touched || submitted)
+              ? 'is-invalid'
+              : f.firstName?.valid
+              ? 'is-valid'
+              : ''
+          "
+          id="firstName"
+          placeholder="First Name"
+          name="firstName"
+          formControlName="firstName"
+          minlength="3"
+          required
+        />
+        <div *ngIf="f.firstName?.errors?.minlength" class="invalid-feedback">
+          First name should contain min 3 letters
+        </div>
+        <div *ngIf="f.firstName?.errors?.required" class="invalid-feedback">
+          Please Enter your First name.
+        </div>
+        <div class="valid-feedback">First name looks good.</div>
+      </div>
+  
+      <div class="form-group form-group-sm">
+        <input
+          type="text"
+          class="form-control"
+          [ngClass]="
+            f.lastName?.invalid &&
+            (f.lastName?.dirty || f.lastName?.touched || submitted)
+              ? 'is-invalid'
+              : f.lastName?.valid
+              ? 'is-valid'
+              : ''
+          "
+          id="lastName"
+          placeholder="Last Name"
+          name="lastName"
+          formControlName="lastName"
+          minlength="3"
+          required
+        />
+        <div *ngIf="f.lastName?.errors?.minlength" class="invalid-feedback">
+          Last name should contain min 3 letters
+        </div>
+        <div *ngIf="f.lastName?.errors?.required" class="invalid-feedback">
+          Please Enter your Last name.
+        </div>
+        <div class="valid-feedback">Last name looks good.</div>
+      </div>
+  
+      <div class="form-group">
+        <input
+          type="email"
+          class="form-control"
+          [ngClass]="
+            f.email?.invalid && (f.email?.dirty || f.email?.touched || submitted)
+              ? 'is-invalid'
+              : f.email?.valid
+              ? 'is-valid'
+              : ''
+          "
+          id="exampleInputEmail1"
+          placeholder="Email"
+          name="email"
+          formControlName="email"
+          required
+          email
+        />
+        <div *ngIf="f.email?.errors?.email" class="invalid-feedback">
+          Email format is not valid eg: user@xx.cxx
+        </div>
+        <div *ngIf="f.email?.errors?.required" class="invalid-feedback">
+          Please Enter your email id.
+        </div>
+        <div class="valid-feedback">Email looks good.</div>
+      </div>
+  
+      <div class="form-group form-group-sm">
+        <input
+          type="date"
+          class="form-control"
+          [ngClass]="
+            f.dob?.invalid && (f.dob?.dirty || f.dob?.touched || submitted)
+              ? 'is-invalid'
+              : f.dob?.valid
+              ? 'is-valid'
+              : ''
+          "
+          id="dob"
+          placeholder="Date of birth"
+          name="dob"
+          formControlName="dob"
+          required
+        />
+        <div *ngIf="f.dob?.errors?.required" class="invalid-feedback">
+          Please Enter your Date Of Birth.
+        </div>
+        <div *ngIf="f.dob?.errors?.invalidDate" class="invalid-feedback">
+          Date Of Birth is Invalid, Must be of format (dd/MM/yyyy).
+        </div>
+        <div *ngIf="f.dob?.errors?.futureDate" class="invalid-feedback">
+          Date Of Birth Cannot be Future.
+        </div>
+        <div *ngIf="f.dob?.errors?.minor" class="invalid-feedback">
+          You have to be Minimum 15 Years or Older
+        </div>
+        <div class="valid-feedback">Date Of Birth looks good.</div>
+      </div>
+  
+      <div class="form-group form-group-sm">
+        <select
+          class="form-control"
+          [ngClass]="
+            f.gender?.invalid &&
+            (f.gender?.dirty || f.gender?.touched || submitted)
+              ? 'is-invalid'
+              : f.gender?.valid
+              ? 'is-valid'
+              : ''
+          "
+          id="gender"
+          placeholder="Gender"
+          name="gender"
+          formControlName="gender"
+          required
+        >
+          <option value="" selected disabled>Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+        <div *ngIf="f.gender?.errors?.required" class="invalid-feedback">
+          Please Select your Gender.
+        </div>
+        <div class="valid-feedback">Gender looks good.</div>
+      </div>
+  
+  
+      <button type="submit" [disabled]="loading" class="btn btn-primary">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        Save
+      </button>
+      <button class="btn btn-primary ml-2">
+          <a routerLink='/social/posts'>Cancel</a>
+      </button>
+      
+    </form>
+  </div>
+  
