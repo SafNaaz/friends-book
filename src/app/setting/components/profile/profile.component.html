@@ -3,7 +3,7 @@
     <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
     <div *ngIf="updateSuccess">
       <div class="alert alert-success mt-3 mb-0">
-          Profile Updated. Please <a routerLink='/login'>Login again</a>
+          Profile Updated. Please <button class="btn btn-primary ml-2" (click)="onLogout()">Login again</button>
       </div>
     </div>
     
@@ -23,7 +23,7 @@
             (f.firstName?.dirty || f.firstName?.touched || submitted)
               ? 'is-invalid'
               : f.firstName?.valid
-              ? 'is-valid'
+              ? ''
               : ''
           "
           id="firstName"
@@ -39,7 +39,7 @@
         <div *ngIf="f.firstName?.errors?.required" class="invalid-feedback">
           Please Enter your First name.
         </div>
-        <div class="valid-feedback">First name looks good.</div>
+        <!-- <div class="valid-feedback">First name looks good.</div> -->
       </div>
   
       <div class="form-group form-group-sm">
@@ -51,7 +51,7 @@
             (f.lastName?.dirty || f.lastName?.touched || submitted)
               ? 'is-invalid'
               : f.lastName?.valid
-              ? 'is-valid'
+              ? ''
               : ''
           "
           id="lastName"
@@ -67,7 +67,7 @@
         <div *ngIf="f.lastName?.errors?.required" class="invalid-feedback">
           Please Enter your Last name.
         </div>
-        <div class="valid-feedback">Last name looks good.</div>
+        <!-- <div class="valid-feedback">Last name looks good.</div> -->
       </div>
   
       <div class="form-group">
@@ -78,7 +78,7 @@
             f.email?.invalid && (f.email?.dirty || f.email?.touched || submitted)
               ? 'is-invalid'
               : f.email?.valid
-              ? 'is-valid'
+              ? ''
               : ''
           "
           id="exampleInputEmail1"
@@ -94,7 +94,7 @@
         <div *ngIf="f.email?.errors?.required" class="invalid-feedback">
           Please Enter your email id.
         </div>
-        <div class="valid-feedback">Email looks good.</div>
+        <!-- <div class="valid-feedback">Email looks good.</div> -->
       </div>
   
       <div class="form-group form-group-sm">
@@ -105,7 +105,7 @@
             f.dob?.invalid && (f.dob?.dirty || f.dob?.touched || submitted)
               ? 'is-invalid'
               : f.dob?.valid
-              ? 'is-valid'
+              ? ''
               : ''
           "
           id="dob"
@@ -126,7 +126,7 @@
         <div *ngIf="f.dob?.errors?.minor" class="invalid-feedback">
           You have to be Minimum 15 Years or Older
         </div>
-        <div class="valid-feedback">Date Of Birth looks good.</div>
+        <!-- <div class="valid-feedback">Date Of Birth looks good.</div> -->
       </div>
   
       <div class="form-group form-group-sm">
@@ -137,7 +137,7 @@
             (f.gender?.dirty || f.gender?.touched || submitted)
               ? 'is-invalid'
               : f.gender?.valid
-              ? 'is-valid'
+              ? ''
               : ''
           "
           id="gender"
@@ -154,7 +154,7 @@
         <div *ngIf="f.gender?.errors?.required" class="invalid-feedback">
           Please Select your Gender.
         </div>
-        <div class="valid-feedback">Gender looks good.</div>
+        <!-- <div class="valid-feedback">Gender looks good.</div> -->
       </div>
 
       <div class="form-group form-group-sm">
@@ -166,7 +166,7 @@
             (f.phone?.dirty || f.phone?.touched || submitted)
               ? 'is-invalid'
               : f.phone?.valid
-              ? 'is-valid'
+              ? ''
               : ''
           "
           id="phone"
@@ -178,7 +178,7 @@
         <div *ngIf="f.phone?.errors?.minlength" class="invalid-feedback">
           Phone Number should contain min 10 digits
         </div>
-        <div class="valid-feedback">Phone Number looks good.</div>
+        <!-- <div class="valid-feedback">Phone Number looks good.</div> -->
       </div>
 
       <div class="form-group form-group-sm">
@@ -190,7 +190,7 @@
             (f.city?.dirty || f.city?.touched || submitted)
               ? 'is-invalid'
               : f.city?.valid
-              ? 'is-valid'
+              ? ''
               : ''
           "
           id="city"
@@ -202,7 +202,7 @@
         <div *ngIf="f.city?.errors?.minlength" class="invalid-feedback">
           City should contain min 2 letters
         </div>
-        <div class="valid-feedback">City looks good.</div>
+        <!-- <div class="valid-feedback">City looks good.</div> -->
       </div>
 
       <div class="form-group form-group-sm">
@@ -214,7 +214,7 @@
             (f.state?.dirty || f.state?.touched || submitted)
               ? 'is-invalid'
               : f.state?.valid
-              ? 'is-valid'
+              ? ''
               : ''
           "
           id="state"
@@ -226,7 +226,7 @@
         <div *ngIf="f.state?.errors?.minlength" class="invalid-feedback">
           State should contain min 2 letters
         </div>
-        <div class="valid-feedback">State looks good.</div>
+        <!-- <div class="valid-feedback">State looks good.</div> -->
       </div>
 
       <div class="form-group form-group-sm">
@@ -238,7 +238,7 @@
             (f.country?.dirty || f.country?.touched || submitted)
               ? 'is-invalid'
               : f.country?.valid
-              ? 'is-valid'
+              ? ''
               : ''
           "
           id="country"
@@ -250,7 +250,7 @@
         <div *ngIf="f.country?.errors?.minlength" class="invalid-feedback">
           Country should contain min 2 letters
         </div>
-        <div class="valid-feedback">Country looks good.</div>
+        <!-- <div class="valid-feedback">Country looks good.</div> -->
       </div>
 
       <div class="form-group form-group-sm">
@@ -262,7 +262,7 @@
             (f.pincode?.dirty || f.pincode?.touched || submitted)
               ? 'is-invalid'
               : f.pincode?.valid
-              ? 'is-valid'
+              ? ''
               : ''
           "
           id="pincode"
@@ -274,7 +274,7 @@
         <div *ngIf="f.pincode?.errors?.minlength" class="invalid-feedback">
           Pincode should contain min 6 digits
         </div>
-        <div class="valid-feedback">Pincode looks good.</div>
+        <!-- <div class="valid-feedback">Pincode looks good.</div> -->
       </div>
 
       <div class="form-group form-group-sm">
@@ -286,7 +286,7 @@
             (f.profession?.dirty || f.profession?.touched || submitted)
               ? 'is-invalid'
               : f.profession?.valid
-              ? 'is-valid'
+              ? ''
               : ''
           "
           id="profession"
@@ -298,7 +298,7 @@
         <div *ngIf="f.profession?.errors?.minlength" class="invalid-feedback">
           Profession should contain min 2 letters
         </div>
-        <div class="valid-feedback">Profession looks good.</div>
+        <!-- <div class="valid-feedback">Profession looks good.</div> -->
       </div>
 
   
@@ -307,8 +307,8 @@
         <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
         Save
       </button>
-      <button class="btn btn-primary ml-2">
-          <a routerLink='/social/posts'>Cancel</a>
+      <button *ngIf="!loading" class="btn btn-primary ml-2" (click)="cancel()">
+          Cancel
       </button>
       
     </form>

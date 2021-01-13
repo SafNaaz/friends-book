@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DateOfBirthValidator } from 'src/app/helpers/validators/dob-validator/dob.validator';
 import { User } from 'src/app/models/user/user';
 import { UserService } from 'src/app/services/user.service';
@@ -23,7 +24,8 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -113,6 +115,15 @@ export class ProfileComponent implements OnInit {
         this.loading = false;
       },
     });
+  }
+
+  onLogout(){
+    this.userService.logout()
+    this.router.navigate(['/login']);
+  }
+
+  cancel(){
+    this.router.navigate(['/social/posts']);
   }
 
 }
