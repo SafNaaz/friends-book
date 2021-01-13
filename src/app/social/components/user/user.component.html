@@ -1,0 +1,22 @@
+<div class="card flex-row flex-wrap mt-2">
+    <div class="card-header border-0">
+        <div *ngIf="!userImageLoaded">
+            <span class="spinner-border spinner-border m-5"></span>
+          </div>
+          <div style="width: 6rem">
+            <img
+              *ngIf="userImageLoaded"
+              class="card-img-top"
+              [src]="userImage"
+              alt="Card image cap"
+              max-width="23rem"
+              max-height="23rem"
+            />
+          </div>
+    </div>
+    <div class="card-block px-2">
+        <h4 class="card-title">{{user.firstName}} {{user.lastName}}</h4>
+        <a *ngIf="userActive" href="#" class="btn btn-primary">Deactivate</a>
+        <a *ngIf="!userActive" href="#" class="btn btn-primary">Activate</a>
+    </div>
+</div>

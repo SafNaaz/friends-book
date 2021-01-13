@@ -10,7 +10,6 @@ import { UserProfile } from '../setting/models/user-profile';
   providedIn: 'root',
 })
 export class UserService {
-  
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 
@@ -71,6 +70,10 @@ export class UserService {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(new User);
+  }
+
+  getAllUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.baseUrl}/users`);
   }
 
 }
