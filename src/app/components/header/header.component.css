@@ -8,3 +8,7 @@ nav{
 .active a:visited{
     color: blue;
 }
+
+a{
+    cursor: pointer;
+}
