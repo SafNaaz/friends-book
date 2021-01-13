@@ -156,6 +156,151 @@
         </div>
         <div class="valid-feedback">Gender looks good.</div>
       </div>
+
+      <div class="form-group form-group-sm">
+        <input
+          type="text"
+          class="form-control"
+          [ngClass]="
+            f.phone?.invalid &&
+            (f.phone?.dirty || f.phone?.touched || submitted)
+              ? 'is-invalid'
+              : f.phone?.valid
+              ? 'is-valid'
+              : ''
+          "
+          id="phone"
+          placeholder="Phone Number"
+          name="phone"
+          formControlName="phone"
+          minlength="10"
+        />
+        <div *ngIf="f.phone?.errors?.minlength" class="invalid-feedback">
+          Phone Number should contain min 10 digits
+        </div>
+        <div class="valid-feedback">Phone Number looks good.</div>
+      </div>
+
+      <div class="form-group form-group-sm">
+        <input
+          type="text"
+          class="form-control"
+          [ngClass]="
+            f.city?.invalid &&
+            (f.city?.dirty || f.city?.touched || submitted)
+              ? 'is-invalid'
+              : f.city?.valid
+              ? 'is-valid'
+              : ''
+          "
+          id="city"
+          placeholder="City"
+          name="city"
+          formControlName="city"
+          minlength="2"
+        />
+        <div *ngIf="f.city?.errors?.minlength" class="invalid-feedback">
+          City should contain min 2 letters
+        </div>
+        <div class="valid-feedback">City looks good.</div>
+      </div>
+
+      <div class="form-group form-group-sm">
+        <input
+          type="text"
+          class="form-control"
+          [ngClass]="
+            f.state?.invalid &&
+            (f.state?.dirty || f.state?.touched || submitted)
+              ? 'is-invalid'
+              : f.state?.valid
+              ? 'is-valid'
+              : ''
+          "
+          id="state"
+          placeholder="State"
+          name="state"
+          formControlName="state"
+          minlength="2"
+        />
+        <div *ngIf="f.state?.errors?.minlength" class="invalid-feedback">
+          State should contain min 2 letters
+        </div>
+        <div class="valid-feedback">State looks good.</div>
+      </div>
+
+      <div class="form-group form-group-sm">
+        <input
+          type="text"
+          class="form-control"
+          [ngClass]="
+            f.country?.invalid &&
+            (f.country?.dirty || f.country?.touched || submitted)
+              ? 'is-invalid'
+              : f.country?.valid
+              ? 'is-valid'
+              : ''
+          "
+          id="country"
+          placeholder="Country"
+          name="country"
+          formControlName="country"
+          minlength="2"
+        />
+        <div *ngIf="f.country?.errors?.minlength" class="invalid-feedback">
+          Country should contain min 2 letters
+        </div>
+        <div class="valid-feedback">Country looks good.</div>
+      </div>
+
+      <div class="form-group form-group-sm">
+        <input
+          type="text"
+          class="form-control"
+          [ngClass]="
+            f.pincode?.invalid &&
+            (f.pincode?.dirty || f.pincode?.touched || submitted)
+              ? 'is-invalid'
+              : f.pincode?.valid
+              ? 'is-valid'
+              : ''
+          "
+          id="pincode"
+          placeholder="Pincode"
+          name="pincode"
+          formControlName="pincode"
+          minlength="6"
+        />
+        <div *ngIf="f.pincode?.errors?.minlength" class="invalid-feedback">
+          Pincode should contain min 6 digits
+        </div>
+        <div class="valid-feedback">Pincode looks good.</div>
+      </div>
+
+      <div class="form-group form-group-sm">
+        <input
+          type="text"
+          class="form-control"
+          [ngClass]="
+            f.profession?.invalid &&
+            (f.profession?.dirty || f.profession?.touched || submitted)
+              ? 'is-invalid'
+              : f.profession?.valid
+              ? 'is-valid'
+              : ''
+          "
+          id="profession"
+          placeholder="Profession"
+          name="profession"
+          formControlName="profession"
+          minlength="2"
+        />
+        <div *ngIf="f.profession?.errors?.minlength" class="invalid-feedback">
+          Profession should contain min 2 letters
+        </div>
+        <div class="valid-feedback">Profession looks good.</div>
+      </div>
+
   
   
       <button type="submit" [disabled]="loading" class="btn btn-primary">

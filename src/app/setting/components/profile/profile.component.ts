@@ -64,12 +64,12 @@ export class ProfileComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       dob: ['', [Validators.required]],
       gender: ['', [Validators.required]],
-      phone: ['', [Validators.required, Validators.minLength(10)]],
-      city: ['', [Validators.required, Validators.minLength(2)]],
-      state: ['', [Validators.required, Validators.minLength(2)]],
-      country: ['', [Validators.required, Validators.minLength(2)]],
-      pincode: ['', [Validators.required, Validators.minLength(6)]],
-      profession: ['', [Validators.required, Validators.minLength(2)]],
+      phone: ['', [Validators.minLength(10)]],
+      city: ['', [Validators.minLength(2)]],
+      state: ['', [Validators.minLength(2)]],
+      country: ['', [Validators.minLength(2)]],
+      pincode: ['', [Validators.minLength(6)]],
+      profession: ['', [Validators.minLength(2)]],
     },
     {
       validators: [
