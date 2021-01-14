@@ -80,6 +80,7 @@
           type="file"
           style="visibility: hidden"
           accept="image/*"
+          [disabled]="loading"
           (change)="processFile(imageInput)"
         />
       </div>
