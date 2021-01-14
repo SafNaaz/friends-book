@@ -11,11 +11,11 @@ export class ImageService {
 
   baseUrl = 'https://nodejs-fb-app.herokuapp.com';
 
-  public uploadImage(image: File): Observable<Response> {
+  public uploadImage(image: File) {
     const formData = new FormData();
 
     formData.append('picture', image);
 
-    return this.http.post<Response>(`${this.baseUrl}/files/uploadfile`, formData);
+    return this.http.post(`${this.baseUrl}/files/uploadfile`, formData);
   }
 }

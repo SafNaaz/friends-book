@@ -26,6 +26,8 @@ export class AddPostComponent implements OnInit {
   addPostSuccess = false;
   editPostSuccess = false;
 
+  uploadedImageId:string= '';
+
   constructor(private fb: FormBuilder,
               private postService: PostService,
               private userService: UserService,
@@ -68,6 +70,7 @@ export class AddPostComponent implements OnInit {
     post.postImageId = this.addPostForm.get('postImage')?this.addPostForm.get('postImage')?.value : '';
     post.profession = this.currentUser.profession? this.currentUser.profession: 'Nil';
     post.userPhotoId = this.currentUser.photoId;
+    post.postImageId = this.uploadedImageId;
     if(this.operation === 'edit'){
       post.id = this.post.id;
     }
@@ -111,8 +114,10 @@ export class AddPostComponent implements OnInit {
 
       this.selectedFile.pending = true;
       this.imageService.uploadImage(this.selectedFile.file).subscribe(
-        (res) => {
+        (res: any) => {
           this.onSuccess();
+          console.log(res)
+          this.uploadedImageId = res.uploadId
         },
         (err) => {
           this.onError();

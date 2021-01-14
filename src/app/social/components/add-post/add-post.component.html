@@ -48,10 +48,10 @@
                  (change)="processFile(imageInput)">
         </label>
 
-        <div *ngIf="selectedFile">
+        <div *ngIf="selectedFile" class="img-preview-container">
 
-          <div 
-               [ngStyle]="{'background-image': 'url('+ selectedFile.src + ')'}">
+          <div *ngIf="selectedFile.status === 'ok'" class="img-preview"
+          [ngStyle]="{'background-image': 'url('+ selectedFile.src + ')'}">
           </div>
         
           <div *ngIf="selectedFile.pending">
@@ -60,8 +60,13 @@
         ></span>
           </div>
         
-          <div *ngIf="selectedFile.status === 'ok'" class="alert alert-success"> Image Uploaded Succesfuly!</div>
-          <div *ngIf="selectedFile.status === 'fail'" class="alert alert-danger"> Image Upload Failed!</div>
+          <div *ngIf="selectedFile.status === 'ok'" class="alert alert-success"> 
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            Image Uploaded Succesfuly!</div>
+          <div *ngIf="selectedFile.status === 'fail'" class="alert alert-danger"> 
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            Image Upload Failed!</div>
+           
         </div>
       </div>
       <button *ngIf="operation=='add'"
