@@ -40,6 +40,29 @@
         <div *ngIf="f.post?.errors?.required" class="invalid-feedback">
           Can't post an empty mind.
         </div>
+        <label>
+          <span>Select Image</span>
+          <input #imageInput
+                 type="file"
+                 accept="image/*"
+                 (change)="processFile(imageInput)">
+        </label>
+
+        <div *ngIf="selectedFile">
+
+          <div 
+               [ngStyle]="{'background-image': 'url('+ selectedFile.src + ')'}">
+          </div>
+        
+          <div *ngIf="selectedFile.pending">
+            <span
+          class="spinner-border spinner-border-sm mr-1"
+        ></span>
+          </div>
+        
+          <div *ngIf="selectedFile.status === 'ok'" class="alert alert-success"> Image Uploaded Succesfuly!</div>
+          <div *ngIf="selectedFile.status === 'fail'" class="alert alert-danger"> Image Upload Failed!</div>
+        </div>
       </div>
       <button *ngIf="operation=='add'"
         type="submit"

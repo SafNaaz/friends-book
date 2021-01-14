@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user/user';
 import { UserService } from 'src/app/services/user.service';
 import { Post } from '../../models/post';
+import { ImageService } from '../../services/image.service';
 import { PostService } from '../../services/post.service';
 
 @Component({
@@ -17,6 +18,8 @@ export class AddPostComponent implements OnInit {
 
   currentUser: User = new User;
 
+  selectedFile!: ImageSnippet;
+
   submitted: boolean = false;
   loading = false;
   error = '';
@@ -25,7 +28,8 @@ export class AddPostComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private postService: PostService,
-              private userService: UserService) { }
+              private userService: UserService,
+              private imageService: ImageService) { }
 
   ngOnInit(): void {
     this.currentUser = this.userService.currentUserValue;
@@ -86,4 +90,43 @@ export class AddPostComponent implements OnInit {
     });
   }
 
+  private onSuccess() {
+    this.selectedFile.pending = false;
+    this.selectedFile.status = 'ok';
+  }
+
+  private onError() {
+    this.selectedFile.pending = false;
+    this.selectedFile.status = 'fail';
+    this.selectedFile.src = '';
+  }
+
+  processFile(imageInput: any) {
+    const file: File = imageInput.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener('load', (event: any) => {
+
+      this.selectedFile = new ImageSnippet(event.target.result, file);
+
+      this.selectedFile.pending = true;
+      this.imageService.uploadImage(this.selectedFile.file).subscribe(
+        (res) => {
+          this.onSuccess();
+        },
+        (err) => {
+          this.onError();
+        })
+    });
+
+    reader.readAsDataURL(file);
+  }
+
+}
+
+class ImageSnippet {
+  pending: boolean = false;
+  status: string = 'init';
+
+  constructor(public src: string, public file: File) {}
 }
