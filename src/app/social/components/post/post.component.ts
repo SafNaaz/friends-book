@@ -75,9 +75,9 @@ export class PostComponent implements OnInit {
     this.editMode = true;
   }
 
-  onCancel(){
-    this.editMode = false;
-  }
+  // onCancel(){
+  //   this.editMode = false;
+  // }
 
   onDelete(){
     this.loading = true;
@@ -90,5 +90,9 @@ export class PostComponent implements OnInit {
       this.postService.getAllPosts();
     })
     
+  }
+
+  onCancelEdit(cancelEdit: boolean){
+    this.editMode = false;
   }
 }

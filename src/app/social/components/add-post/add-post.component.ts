@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user/user';
 import { UserService } from 'src/app/services/user.service';
@@ -127,6 +127,12 @@ export class AddPostComponent implements OnInit {
 
     reader.readAsDataURL(file);
   }
+
+  @Output() cancelEdit: EventEmitter<boolean> = new EventEmitter();
+
+  cancel() {
+      this.cancelEdit.emit(true);
+    }
 
 }
 

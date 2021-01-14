@@ -24,17 +24,18 @@
         *ngIf="editMode"
         [operation]="operation"
         [post]="post"
+        (cancelEdit)="onCancelEdit($event)"
       ></app-add-post>
       
       
-      <button
+      <!-- <button
         *ngIf="editMode"
         type="submit"
         class="btn btn-primary float-right"
         (click)="onCancel()"
       >
         Cancel
-      </button>
+      </button> -->
 
       <!-- <button *ngIf="!editMode" type="submit" class="btn btn-primary mr-2 float-right" (click)="onDelete()">
         <span
