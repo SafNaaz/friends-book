@@ -52,9 +52,15 @@
             class="img-preview"
             [ngStyle]="{ 'background-image': 'url(' + selectedFile.src + ')' }"
           ></div>
+          <div
+            *ngIf="selectedFile.status === 'ok'">
+            <br>
+          Uploaded {{imageName}}
+          </div>
 
           <div *ngIf="selectedFile.pending">
             <span class="spinner-border spinner-border-sm mr-1"></span>
+            Uploading...
           </div>
           <div
             *ngIf="selectedFile.status === 'fail'"

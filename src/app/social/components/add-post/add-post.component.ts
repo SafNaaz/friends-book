@@ -27,6 +27,7 @@ export class AddPostComponent implements OnInit {
   editPostSuccess = false;
 
   uploadedImageId:string= '';
+  imageName:string= '';
 
   constructor(private fb: FormBuilder,
               private postService: PostService,
@@ -93,9 +94,10 @@ export class AddPostComponent implements OnInit {
     });
   }
 
-  private onSuccess() {
+  private onSuccess(file: any) {
     this.selectedFile.pending = false;
     this.selectedFile.status = 'ok';
+    this.imageName = file.file.name;
   }
 
   private onError() {
@@ -115,8 +117,7 @@ export class AddPostComponent implements OnInit {
       this.selectedFile.pending = true;
       this.imageService.uploadImage(this.selectedFile.file).subscribe(
         (res: any) => {
-          this.onSuccess();
-          console.log(res)
+          this.onSuccess(this.selectedFile);
           this.uploadedImageId = res.uploadId
         },
         (err) => {
