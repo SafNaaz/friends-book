@@ -2,14 +2,19 @@
   <div class="card-body">
     <div *ngIf="error" class="alert alert-danger mt-3 mb-0">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
-      {{ error }}</div>
+      {{ error }}
+    </div>
     <div *ngIf="addPostSuccess">
-      <div  *ngIf="operation=='add'" class="alert alert-success mt-3 mb-0">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <div *ngIf="operation == 'add'" class="alert alert-success mt-3 mb-0">
+        <button type="button" class="close" data-dismiss="alert">
+          &times;
+        </button>
         New Post Added
       </div>
-      <div  *ngIf="operation=='edit'" class="alert alert-success mt-3 mb-0">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <div *ngIf="operation == 'edit'" class="alert alert-success mt-3 mb-0">
+        <button type="button" class="close" data-dismiss="alert">
+          &times;
+        </button>
         Post Edited
       </div>
     </div>
@@ -24,7 +29,7 @@
           type="text"
           class="form-control"
           [ngClass]="
-            f.post?.invalid && (submitted && !addPostSuccess)
+            f.post?.invalid && submitted && !addPostSuccess
               ? 'is-invalid'
               : f.post?.valid
               ? 'is-valid'
@@ -40,36 +45,40 @@
         <div *ngIf="f.post?.errors?.required" class="invalid-feedback">
           Can't post an empty mind.
         </div>
-        <label>
-          <span>Select Image</span>
-          <input #imageInput
-                 type="file"
-                 accept="image/*"
-                 (change)="processFile(imageInput)">
-        </label>
-
         <div *ngIf="selectedFile" class="img-preview-container">
+          <br />
+          <div
+            *ngIf="selectedFile.status === 'ok'"
+            class="img-preview"
+            [ngStyle]="{ 'background-image': 'url(' + selectedFile.src + ')' }"
+          ></div>
 
-          <div *ngIf="selectedFile.status === 'ok'" class="img-preview"
-          [ngStyle]="{'background-image': 'url('+ selectedFile.src + ')'}">
-          </div>
-        
           <div *ngIf="selectedFile.pending">
-            <span
-          class="spinner-border spinner-border-sm mr-1"
-        ></span>
+            <span class="spinner-border spinner-border-sm mr-1"></span>
           </div>
-        
-          <div *ngIf="selectedFile.status === 'ok'" class="alert alert-success"> 
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            Image Uploaded Succesfuly!</div>
-          <div *ngIf="selectedFile.status === 'fail'" class="alert alert-danger"> 
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            Image Upload Failed!</div>
-           
+          <div
+            *ngIf="selectedFile.status === 'fail'"
+            class="alert alert-danger"
+          >
+            Image Upload Failed!
+          </div>
         </div>
+
+        <br />
+
+        <label for="files" class="btn btn-secondary">Select Image</label>
+        <input
+          #imageInput
+          class="btn btn-secondary"
+          id="files"
+          type="file"
+          style="visibility: hidden"
+          accept="image/*"
+          (change)="processFile(imageInput)"
+        />
       </div>
-      <button *ngIf="operation=='add'"
+      <button
+        *ngIf="operation == 'add'"
         type="submit"
         [disabled]="loading && !addPostSuccess"
         class="btn btn-primary"
@@ -80,7 +89,8 @@
         ></span>
         Add New Post
       </button>
-      <button *ngIf="operation=='edit'"
+      <button
+        *ngIf="operation == 'edit'"
         type="submit"
         [disabled]="loading && !addPostSuccess"
         class="btn btn-primary float-right"
