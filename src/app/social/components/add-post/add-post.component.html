@@ -45,7 +45,7 @@
         <div *ngIf="f.post?.errors?.required" class="invalid-feedback">
           Can't post an empty mind.
         </div>
-        <div *ngIf="selectedFile" class="img-preview-container">
+        <div *ngIf="selectedFile && !addPostSuccess" class="img-preview-container">
           <br />
           <div
             *ngIf="selectedFile.status === 'ok'"

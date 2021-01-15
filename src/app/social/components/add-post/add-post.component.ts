@@ -84,6 +84,8 @@ export class AddPostComponent implements OnInit {
         this.addPostSuccess = true;
         this.loading = false;
         this.addPostForm.get('post')?.reset()
+        this.selectedFile.pending = false;
+        this.selectedFile.src = '';
         this.postService.getAllPosts();
         // this.router.navigate(['/login']);
       },
