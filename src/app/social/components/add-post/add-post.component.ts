@@ -106,8 +106,30 @@ export class AddPostComponent implements OnInit {
     this.selectedFile.src = '';
   }
 
-  processFile(imageInput: any) {
-    const file: File = imageInput.files[0];
+  processFileEdit(imageInputEdit: any) {
+    const file: File = imageInputEdit.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener('load', (event: any) => {
+
+      this.selectedFile = new ImageSnippet(event.target.result, file);
+
+      this.selectedFile.pending = true;
+      this.imageService.uploadImage(this.selectedFile.file).subscribe(
+        (res: any) => {
+          this.onSuccess(this.selectedFile);
+          this.uploadedImageId = res.uploadId
+        },
+        (err) => {
+          this.onError();
+        })
+    });
+
+    reader.readAsDataURL(file);
+  }
+
+  processFileAdd(imageInputAdd: any) {
+    const file: File = imageInputAdd.files[0];
     const reader = new FileReader();
 
     reader.addEventListener('load', (event: any) => {

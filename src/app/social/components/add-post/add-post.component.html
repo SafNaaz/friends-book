@@ -72,16 +72,29 @@
 
         <br />
 
-        <label for="files" class="btn btn-secondary">Select Image</label>
+        <label *ngIf="operation == 'add'" for="filesAdd" class="btn btn-secondary">Select Image</label>
         <input
-          #imageInput
+        *ngIf="operation == 'add'"
+          #imageInputAdd
           class="btn btn-secondary"
-          id="files"
+          id="filesAdd"
           type="file"
           style="visibility: hidden"
           accept="image/*"
           [disabled]="loading"
-          (change)="processFile(imageInput)"
+          (change)="processFileAdd(imageInputAdd)"
+        />
+        <label *ngIf="operation == 'edit'" for="filesEdit" class="btn btn-secondary">Select Image</label>
+        <input
+          *ngIf="operation == 'edit'"
+          #imageInputEdit
+          class="btn btn-secondary"
+          id="filesEdit"
+          type="file"
+          style="visibility: hidden"
+          accept="image/*"
+          [disabled]="loading"
+          (change)="processFileEdit(imageInputEdit)"
         />
       </div>
       <button

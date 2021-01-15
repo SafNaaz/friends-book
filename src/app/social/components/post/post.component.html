@@ -1,10 +1,10 @@
 <div *ngIf="!deleteSuccess" class="card mb-3">
   <div class="card-body">
     <h6 class="card-title">{{ post.userName }}</h6>
-    <p class="card-text" *ngIf="!editMode">
+    <p class="card-text">
       <small class="text-muted">{{ post.createdDate | date }}</small>
     </p>
-    <p class="card-text" *ngIf="!editMode">{{ post.post }}</p>
+    <p class="card-text">{{ post.post }}</p>
     <div *ngIf="!postImageLoaded">
       <span class="spinner-border spinner-border m-5"></span>
     </div>
@@ -19,7 +19,7 @@
       />
     </div>
 
-    <div *ngIf="postOfCurrentUser">
+    <div *ngIf="postOfCurrentUser" class="mt-2">
       <app-add-post
         *ngIf="editMode"
         [operation]="operation"
